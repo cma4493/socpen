@@ -1783,6 +1783,8 @@ $tbl_pension_payroll_list->Page_Render();
 include_once "model/DAO.php";
 include_once "model/SummaryBeneficiary.php";
 include_once "model/psgcclass.php";
+include_once "model/UserClass.php";
+$UserClass = new UserClass(CurrentUserID());
 $psgcclass = new psgcclass();
 ?>
 <script src="my_js/psgc.js"></script>
@@ -1830,17 +1832,29 @@ if ($_REQUEST['generatebtn'] == 1){
 	$quarter = $_REQUEST['quarter'];
 	$paid_unpaid = $_REQUEST['paid_unpaid'];
 
-	$SummaryBeneficiary = new SummaryBeneficiary($region,$province,$municipality,$barangay,$quarter,$year,$paid_unpaid); ?>
-
-	<div class="space-2"></div>
-	<div class="table-header">Summary of Payments</div>
-	<div class="space-2"></div>
-	<?php if ($SummaryBeneficiary->checkifExisting() > 0) { ?>
-		<?php echo $SummaryBeneficiary->renderHtml('table table-striped table-bordered table-hover','','') ?>
-	<?php } else { ?>
-		<div class="alert alert-info">
-			The summary you are trying to generate does not exist...
+	if ($region <> $UserClass->getUserRegion())
+	{
+		?>
+		<div class="alert alert-danger">
+			Please recheck your selected Region, you should have the same region.
+			If problems persist, contact System Administrator!
 		</div>
+		<?php
+	}
+	else
+	{
+		$SummaryBeneficiary = new SummaryBeneficiary($region,$province,$municipality,$barangay,$quarter,$year,$paid_unpaid);
+		?>
+		<div class="space-2"></div>
+		<div class="table-header">Summary of Payments</div>
+		<div class="space-2"></div>
+		<?php if ($SummaryBeneficiary->checkifExisting() > 0) { ?>
+			<?php echo $SummaryBeneficiary->renderHtml('table table-striped table-bordered table-hover','','') ?>
+		<?php } else { ?>
+			<div class="alert alert-info">
+				The summary you are trying to generate does not exist...
+			</div>
+		<?php } ?>
 	<?php } ?>
 <?php } ?>
 <?php include_once "footer.php" ?>
