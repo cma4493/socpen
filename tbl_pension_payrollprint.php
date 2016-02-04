@@ -1785,6 +1785,8 @@ include_once "model/payrollPrinting.php";
 include_once "model/create_payroll_pdf.php";
 include_once "model/GeneratedPayrollList.php";
 include_once "model/ar.generate.class.php";
+include_once "model/UserClass.php";
+$UserClass = new UserClass(CurrentUserID());
 $GeneratedPayrollList = new GeneratedPayrollList();
 $psgcclass = new psgcclass();
 ?>
@@ -1831,59 +1833,76 @@ $psgcclass = new psgcclass();
 <?php
 if ($_REQUEST['printBtn'] == 1)
 {
-	if ($_REQUEST['jb_region_code'] <> '' && $_REQUEST['jb_prov_code'] == '' && $_REQUEST['jb_city_code'] == '' && $_REQUEST['jb_brgy_code'] == '')
+	if ($_REQUEST['jb_region_code'] <> $UserClass->getUserRegion())
 	{
-		$psgcfilename = $_REQUEST['jb_region_code'];
-	}
-	elseif ($_REQUEST['jb_region_code'] <> '' && $_REQUEST['jb_prov_code'] <> '' && $_REQUEST['jb_city_code'] == '' && $_REQUEST['jb_brgy_code'] == '')
-	{
-		$psgcfilename = $_REQUEST['jb_prov_code'];
-	}
-	elseif ($_REQUEST['jb_region_code'] <> '' && $_REQUEST['jb_prov_code'] <> '' && $_REQUEST['jb_city_code'] <> '' && $_REQUEST['jb_brgy_code'] == '')
-	{
-		$psgcfilename = $_REQUEST['jb_city_code'];
-	}
-	elseif ($_REQUEST['jb_region_code'] <> '' && $_REQUEST['jb_prov_code'] <> '' && $_REQUEST['jb_city_code'] <> '' && $_REQUEST['jb_brgy_code'] <> '')
-	{
-		$psgcfilename = $_REQUEST['jb_brgy_code'];
+	?>
+		<div class="alert alert-danger">
+			Please recheck your selected Region, you should have the same region.
+			If problems persist, contact System Administrator!
+		</div>
+<?php
 	}
 	else
 	{
-		$psgcfilename = '00';
-	}
-	$filename = 'socpen-'.$psgcfilename.'-'.$_REQUEST['jb_quarter'].'-'.$_REQUEST['jb_year'].'-'.date('mdYHis').'-'.CurrentUserID();
-	$filenamear = 'ar-'.$psgcfilename.'-'.$_REQUEST['jb_quarter'].'-'.$_REQUEST['jb_year'].'-'.date('mdYHis').'-'.CurrentUserID();
-	if($GeneratedPayrollList->ifExisint($filename . '.pdf') > 0 && $GeneratedPayrollList->ifExisintAR($filenamear . '.pdf') > 0)
-	{ ?>
-		<div class="space-6"></div>
-		<div class="alert alert-info">List already generated, check table below!</div>
-	<?php }
-	else
-	{
-		/*echo '<a target="_blank" class="btn btn-sm btn-warning" href="'.create_payroll_pdf('"http://localhost/socpen_access/model/modeltester.php?region='.$_REQUEST['jb_region_code'].'&province='.$_REQUEST['jb_prov_code'].'&city='.$_REQUEST['jb_city_code'].'&brgy='.$_REQUEST['jb_brgy_code'].'&year='.$_REQUEST['jb_year'].'&quarter='.$_REQUEST['jb_quarter'].'"',$filename,$_REQUEST['jb_signatory'],$_REQUEST['jb_position'],$_REQUEST['jb_signatory2'],$_REQUEST['jb_position2'],$_REQUEST['jb_signatory3'],$_REQUEST['jb_position3'],$_REQUEST['jb_quarter'],$_REQUEST['jb_year']).'">' . '<i class="icon-download"></i>' . 'Download' . '</a>';*/
-		create_payroll_pdf('"http://localhost/socpen_access/model/payroll.php?region='.$_REQUEST['jb_region_code'].'&province='.$_REQUEST['jb_prov_code'].'&city='.$_REQUEST['jb_city_code'].'&brgy='.$_REQUEST['jb_brgy_code'].'&year='.$_REQUEST['jb_year'].'&quarter='.$_REQUEST['jb_quarter'].'"',$filename,$_REQUEST['jb_signatory'],$_REQUEST['jb_position'],$_REQUEST['jb_signatory2'],$_REQUEST['jb_position2'],$_REQUEST['jb_signatory3'],$_REQUEST['jb_position3'],$_REQUEST['jb_quarter'],$_REQUEST['jb_year']);
-		create_AR_pdf('"http://localhost/socpen_access/model/acknowledgment_receipt.php?region='.$_REQUEST['jb_region_code'].'&province='.$_REQUEST['jb_prov_code'].'&city='.$_REQUEST['jb_city_code'].'&brgy='.$_REQUEST['jb_brgy_code'].'&year='.$_REQUEST['jb_year'].'&quarter='.$_REQUEST['jb_quarter'].'"',$filenamear);
-		/*create_payroll_pdf('"http://'.$_SERVER['SERVER_NAME'].'/model/payroll.php?region='.$_REQUEST['jb_region_code'].'&province='.$_REQUEST['jb_prov_code'].'&city='.$_REQUEST['jb_city_code'].'&brgy='.$_REQUEST['jb_brgy_code'].'&year='.$_REQUEST['jb_year'].'&quarter='.$_REQUEST['jb_quarter'].'"',$filename,$_REQUEST['jb_signatory'],$_REQUEST['jb_position'],$_REQUEST['jb_signatory2'],$_REQUEST['jb_position2'],$_REQUEST['jb_signatory3'],$_REQUEST['jb_position3'],$_REQUEST['jb_quarter'],$_REQUEST['jb_year']);
-		create_AR_pdf('"http://'.$_SERVER['SERVER_NAME'].'/model/acknowledgment_receipt.php?region='.$_REQUEST['jb_region_code'].'&province='.$_REQUEST['jb_prov_code'].'&city='.$_REQUEST['jb_city_code'].'&brgy='.$_REQUEST['jb_brgy_code'].'&year='.$_REQUEST['jb_year'].'&quarter='.$_REQUEST['jb_quarter'].'"',$filenamear);*/
-		$payroll_insertResult = $GeneratedPayrollList->insertGenPayroll($filename,'generatedfiles',CurrentUserID());
-		$ar_insertResult = $GeneratedPayrollList->insertGenAR($filenamear,'generatedfiles',CurrentUserID());
-		if($payroll_insertResult == 1 && $ar_insertResult == 1)
+		if ($_REQUEST['jb_region_code'] <> '' && $_REQUEST['jb_prov_code'] == '' && $_REQUEST['jb_city_code'] == '' && $_REQUEST['jb_brgy_code'] == '')
+		{
+			$psgcfilename = $_REQUEST['jb_region_code'];
+		}
+		elseif ($_REQUEST['jb_region_code'] <> '' && $_REQUEST['jb_prov_code'] <> '' && $_REQUEST['jb_city_code'] == '' && $_REQUEST['jb_brgy_code'] == '')
+		{
+			$psgcfilename = $_REQUEST['jb_prov_code'];
+		}
+		elseif ($_REQUEST['jb_region_code'] <> '' && $_REQUEST['jb_prov_code'] <> '' && $_REQUEST['jb_city_code'] <> '' && $_REQUEST['jb_brgy_code'] == '')
+		{
+			$psgcfilename = $_REQUEST['jb_city_code'];
+		}
+		elseif ($_REQUEST['jb_region_code'] <> '' && $_REQUEST['jb_prov_code'] <> '' && $_REQUEST['jb_city_code'] <> '' && $_REQUEST['jb_brgy_code'] <> '')
+		{
+			$psgcfilename = $_REQUEST['jb_brgy_code'];
+		}
+		else
+		{
+			$psgcfilename = '00';
+		}
+		$filename = 'socpen-'.$psgcfilename.'-'.$_REQUEST['jb_quarter'].'-'.$_REQUEST['jb_year'].'-'.date('mdYHis').'-'.CurrentUserID();
+		$filenamear = 'ar-'.$psgcfilename.'-'.$_REQUEST['jb_quarter'].'-'.$_REQUEST['jb_year'].'-'.date('mdYHis').'-'.CurrentUserID();
+		if($GeneratedPayrollList->ifExisint($filename . '.pdf') > 0 && $GeneratedPayrollList->ifExisintAR($filenamear . '.pdf') > 0)
 		{ ?>
-			<div class="space-2"></div>
-			<div class="alert alert-success">
-				File successfully generated! Check table below for: <strong><?php echo $filename ?>.pdf</strong>
-			</div>
-		<?php } else { ?>
-			<div class="space-2"></div>
-			<div class="alert alert-info">
-				There was problem generating your file, try again. If this notification persists, contact system administrator...
-			</div>
+			<div class="space-6"></div>
+			<div class="alert alert-info">List already generated, check table below!</div>
 		<?php }
+		else
+		{
+			/*echo '<a target="_blank" class="btn btn-sm btn-warning" href="'.create_payroll_pdf('"http://localhost/socpen_access/model/modeltester.php?region='.$_REQUEST['jb_region_code'].'&province='.$_REQUEST['jb_prov_code'].'&city='.$_REQUEST['jb_city_code'].'&brgy='.$_REQUEST['jb_brgy_code'].'&year='.$_REQUEST['jb_year'].'&quarter='.$_REQUEST['jb_quarter'].'"',$filename,$_REQUEST['jb_signatory'],$_REQUEST['jb_position'],$_REQUEST['jb_signatory2'],$_REQUEST['jb_position2'],$_REQUEST['jb_signatory3'],$_REQUEST['jb_position3'],$_REQUEST['jb_quarter'],$_REQUEST['jb_year']).'">' . '<i class="icon-download"></i>' . 'Download' . '</a>';*/
+			create_payroll_pdf('"http://localhost/socpen_access/model/payroll.php?region='.$_REQUEST['jb_region_code'].'&province='.$_REQUEST['jb_prov_code'].'&city='.$_REQUEST['jb_city_code'].'&brgy='.$_REQUEST['jb_brgy_code'].'&year='.$_REQUEST['jb_year'].'&quarter='.$_REQUEST['jb_quarter'].'"',$filename,$_REQUEST['jb_signatory'],$_REQUEST['jb_position'],$_REQUEST['jb_signatory2'],$_REQUEST['jb_position2'],$_REQUEST['jb_signatory3'],$_REQUEST['jb_position3'],$_REQUEST['jb_quarter'],$_REQUEST['jb_year']);
+			create_AR_pdf('"http://localhost/socpen_access/model/acknowledgment_receipt.php?region='.$_REQUEST['jb_region_code'].'&province='.$_REQUEST['jb_prov_code'].'&city='.$_REQUEST['jb_city_code'].'&brgy='.$_REQUEST['jb_brgy_code'].'&year='.$_REQUEST['jb_year'].'&quarter='.$_REQUEST['jb_quarter'].'"',$filenamear);
+			/*create_payroll_pdf('"http://'.$_SERVER['SERVER_NAME'].'/model/payroll.php?region='.$_REQUEST['jb_region_code'].'&province='.$_REQUEST['jb_prov_code'].'&city='.$_REQUEST['jb_city_code'].'&brgy='.$_REQUEST['jb_brgy_code'].'&year='.$_REQUEST['jb_year'].'&quarter='.$_REQUEST['jb_quarter'].'"',$filename,$_REQUEST['jb_signatory'],$_REQUEST['jb_position'],$_REQUEST['jb_signatory2'],$_REQUEST['jb_position2'],$_REQUEST['jb_signatory3'],$_REQUEST['jb_position3'],$_REQUEST['jb_quarter'],$_REQUEST['jb_year']);
+            create_AR_pdf('"http://'.$_SERVER['SERVER_NAME'].'/model/acknowledgment_receipt.php?region='.$_REQUEST['jb_region_code'].'&province='.$_REQUEST['jb_prov_code'].'&city='.$_REQUEST['jb_city_code'].'&brgy='.$_REQUEST['jb_brgy_code'].'&year='.$_REQUEST['jb_year'].'&quarter='.$_REQUEST['jb_quarter'].'"',$filenamear);*/
+			$payroll_insertResult = $GeneratedPayrollList->insertGenPayroll($filename,'generatedfiles',CurrentUserID());
+			$ar_insertResult = $GeneratedPayrollList->insertGenAR($filenamear,'generatedfiles',CurrentUserID());
+			if($payroll_insertResult == 1 && $ar_insertResult == 1)
+			{ ?>
+				<div class="space-2"></div>
+				<div class="alert alert-success">
+					File successfully generated! Check table below for: <strong><?php echo $filename ?>.pdf</strong>
+				</div>
+			<?php } else { ?>
+				<div class="space-2"></div>
+				<div class="alert alert-info">
+					There was problem generating your file, try again. If this notification persists, contact system administrator...
+				</div>
+			<?php }
+		}
 	}
 }
 ?>
-<?php echo $GeneratedPayrollList->renderListPayroll() ?>
-<?php echo $GeneratedPayrollList->renderListAR() ?>
+<?php if(CurrentUserLevel() <> -1) { ?>
+	<?php echo $GeneratedPayrollList->renderListPayroll($UserClass->getUserRegion()) ?>
+	<?php echo $GeneratedPayrollList->renderListAR($UserClass->getUserRegion()) ?>
+<?php } else { ?>
+	<?php echo $GeneratedPayrollList->renderListPayrollAdmin() ?>
+	<?php echo $GeneratedPayrollList->renderListARAdmin() ?>
+<?php } ?>
 <?php include_once "footer.php" ?>
 <?php
 $tbl_pension_payroll_list->Page_Terminate();
