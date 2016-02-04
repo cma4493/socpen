@@ -1,0 +1,972 @@
+﻿<?xml version="1.0" standalone="yes"?>
+<ew-language date="2015/12/15" version="10.0.1" id="en" name="English" desc="English" author="e.World Technology Ltd.">
+	<locale>
+		<phrase id="locale" value=""/><!-- *** system locale for this language -->
+		<phrase id="use_system_locale" value="1"/><!-- *** change to "0" to disable system locale and use the following settings *** -->
+		<phrase id="decimal_point" value="."/>
+		<phrase id="thousands_sep" value=","/>
+		<phrase id="mon_decimal_point" value="."/>
+		<phrase id="mon_thousands_sep" value=","/>
+		<phrase id="currency_symbol" value="$"/>
+		<phrase id="positive_sign" value=""/>
+		<phrase id="negative_sign" value="-"/>
+		<phrase id="frac_digits" value="2"/>
+		<phrase id="p_cs_precedes" value="1"/>
+		<phrase id="p_sep_by_space" value="0"/>
+		<phrase id="n_cs_precedes" value="1"/>
+		<phrase id="n_sep_by_space" value="0"/>
+		<phrase id="p_sign_posn" value="3"/>
+		<phrase id="n_sign_posn" value="3"/>
+		<phrase id="time_zone" value="US/Pacific"/><!-- *** used for multi-language site only *** -->
+	</locale>
+	<global>
+		<phrase id="actiondeleted" value="Deleted"/>
+		<phrase id="actioninserted" value="Inserted"/>
+		<phrase id="actioninsertedgridadd" value="Inserted (Grid-Add)"/>
+		<phrase id="actionupdated" value="Updated"/>
+		<phrase id="actionupdatedgridedit" value="Updated (Grid-Edit)"/>
+		<phrase id="actionupdatedmultiupdate" value="Updated (Multi-Update)"/>
+		<phrase id="activateaccount" value="Your account is activated"/>
+		<phrase id="activatefailed" value="Activation failed"/>
+		<phrase id="add" value="Add"/>
+		<phrase id="addblankrow" value="Add Blank Row" imageurl="phpimages/addblankrow.gif" imagewidth="16" imageheight="16"/>
+		<phrase id="addbtn" value="Add"/>
+		<phrase id="addlink" value="Add"/>
+		<phrase id="addmasterdetaillink" value="Add Master/Detail"/>
+		<phrase id="addsuccess" value="Add succeeded"/>
+		<phrase id="advancedsearch" value="Advanced Search"/>
+		<phrase id="allrecords" value="All"/>
+		<phrase id="allword" value="All words"/>
+		<phrase id="alwaysask" value="Always ask for my user name and password"/>
+		<phrase id="anyword" value="Any word"/>
+		<phrase id="audittrailautologin" value="autologin"/>
+		<phrase id="audittrailfailedattempt" value="failed attempt: %n"/>
+		<phrase id="audittrailuserloggedin" value="user already logged in"/>
+		<phrase id="audittrailpasswordexpired" value="password expired"/>
+		<phrase id="audittraillogin" value="login"/>
+		<phrase id="audittraillogout" value="logout"/>
+		<phrase id="autologin" value="Auto login until I logout explicitly"/>
+		<phrase id="average" value="Average"/>
+		<phrase id="backtolist" value="Back to List"/>
+		<phrase id="backtologin" value="Back to login page"/>
+		<phrase id="backtomasterrecordpage" value="Back to master table"/>
+		<phrase id="batchdeletebegin" value="*** Batch delete begin ***"/>
+		<phrase id="batchdeleterollback" value="*** Batch delete rollback ***"/>
+		<phrase id="batchdeletesuccess" value="*** Batch delete successful ***"/>
+		<phrase id="batchinsertbegin" value="*** Batch insert begin ***"/>
+		<phrase id="batchinsertrollback" value="*** Batch insert rollback ***"/>
+		<phrase id="batchinsertsuccess" value="*** Batch insert successful ***"/>
+		<phrase id="batchupdatebegin" value="*** Batch update begin ***"/>
+		<phrase id="batchupdaterollback" value="*** Batch update rollback ***"/>
+		<phrase id="batchupdatesuccess" value="*** Batch update successful ***"/>
+		<phrase id="breadcrumbdivider" value="/"/>
+		<phrase id="buttonactions" value="Actions"/>
+		<phrase id="buttonaddedit" value="Add/Edit"/>
+		<phrase id="buttondetails" value="Master/Detail"/>
+		<phrase id="buttonexport" value="Export"/>
+		<phrase id="buttonlistoptions" value="Options"/>
+		<phrase id="cancelbtn" value="Cancel"/>
+		<phrase id="cancellink" value="Cancel" imageurl="phpimages/cancel.gif" imagewidth="16" imageheight="16"/>
+		<phrase id="changepwd" value="Change Password"/>
+		<phrase id="changepwdpage" value="Change Password"/>
+		<phrase id="changepwdbtn" value="Change"/>
+		<phrase id="choosefile" value="Choose..."/>
+		<phrase id="confirm" value="Confirm"/>
+		<phrase id="confirmbtn" value="Confirm"/>
+		<phrase id="confirmpassword" value="Confirm Password"/>
+		<phrase id="conflictcancellink" value="Cancel"/>
+		<phrase id="copy" value="Copy"/>
+		<phrase id="copylink" value="Copy" imageurl="phpimages/copy.gif" imagewidth="16" imageheight="16"/>
+		<phrase id="count" value="Count"/>
+		<phrase id="customactioncompleted" value="Action '%s' is completed"/>
+		<phrase id="customactioncancelled" value="Action '%s' is cancelled"/>
+		<phrase id="customview" value="CUSTOM VIEW"/>
+		<phrase id="delete" value="Delete"/>
+		<phrase id="deletebtn" value="Delete"/>
+		<phrase id="deletecancelled" value="Delete cancelled"/>
+		<phrase id="deleteconfirmmsg" value="Do you want to delete this record?" client="1"/>
+		<phrase id="deletelink" value="Delete" imageurl="phpimages/delete.gif" imagewidth="16" imageheight="16"/>
+		<phrase id="deletemulticonfirmmsg" value="Do you want to delete the selected records?" client="1"/>
+		<phrase id="setclaimmulticonfirmmsg" value="Set records as claimed?" client="1"/>
+		<phrase id="deleteselectedlink" value="Delete Selected Records"/>
+		<phrase id="deletesuccess" value="Delete succeeded"/>
+		<phrase id="detaillink" value=""/>
+		<phrase id="detailcount" value="(%c)"/>
+		<phrase id="masterdetailcopylink" value="Master/Detail Copy"/>
+		<phrase id="masterdetaileditlink" value="Master/Detail Edit"/>
+		<phrase id="masterdetailviewlink" value="Master/Detail View"/>
+		<phrase id="dupindex" value="Duplicate value '%v' for unique index '%f'"/>
+		<phrase id="dupkey" value="Duplicate primary key: '%f'"/>
+		<phrase id="edit" value="Edit"/>
+		<phrase id="editbtn" value="Edit"/>
+		<phrase id="editlink" value="Edit" imageurl="phpimages/edit.gif" imagewidth="16" imageheight="16"/>
+		<phrase id="enternewpassword" value="Please enter new password" client="1"/>
+		<phrase id="enteroldpassword" value="Please enter old password" client="1"/>
+		<phrase id="enterpassword" value="Please enter password" client="1"/>
+		<phrase id="enterpwd" value="Please enter password" client="1"/>
+		<phrase id="enterrequiredfield" value="Please enter required field" client="1"/>
+		<phrase id="entersearchcriteria" value="Please enter search criteria"/>
+		<phrase id="enterusername" value="Please enter username" client="1"/>
+		<phrase id="entervalidatecode" value="Please enter the validation code shown" client="1"/>
+		<phrase id="entersenderemail" value="Please enter sender email" client="1"/>
+		<phrase id="enterpropersenderemail" value="Exceed maximum sender email count or email address incorrect" client="1"/>
+		<phrase id="enterrecipientemail" value="Please enter recipient email" client="1"/>
+		<phrase id="enterproperrecipientemail" value="Exceed maximum recipient email count or email address incorrect" client="1"/>
+		<phrase id="enterproperccemail" value="Exceed maximum cc email count or email address incorrect" client="1"/>
+		<phrase id="enterproperbccemail" value="Exceed maximum bcc email count or email address incorrect" client="1"/>
+		<phrase id="entersubject" value="Please enter subject" client="1"/>
+		<phrase id="emailformsender" value="From"/>
+		<phrase id="emailformrecipient" value="To"/>
+		<phrase id="emailformcc" value="Cc"/>
+		<phrase id="emailformbcc" value="Bcc"/>
+		<phrase id="emailformsubject" value="Subject"/>
+		<phrase id="emailformmessage" value="Message"/>
+		<phrase id="emailformcontenttype" value="Send as"/>
+		<phrase id="emailformcontenttypeurl" value="URL"/>
+		<phrase id="emailformcontenttypehtml" value="HTML"/>
+		<phrase id="enteruid" value="Please enter user ID" client="1"/>
+		<phrase id="entervalidemail" value="Please enter valid Email Address!" client="1"/>
+		<phrase id="exactphrase" value="Exact phrase"/>
+		<phrase id="exceedmaxretry" value="Exceed maximum login retry count. Account is locked. Please try again in %t minutes"/>
+		<phrase id="exceedmaxemailexport" value="Exceed maximum export email count. Please try again later"/>
+		<phrase id="exporttocsv" value="Export to CSV" imageurl="phpimages/exportcsv.gif" imagewidth="16" imageheight="16"/>
+		<phrase id="exporttocsvtext" value="CSV"/>
+		<phrase id="exporttoemail" value="Email" imageurl="phpimages/exportemail.gif" client="1" imagewidth="16" imageheight="16"/>
+		<phrase id="exporttoemailtext" value="Email" client="1"/>
+		<phrase id="exporttoexcel" value="Export to Excel" imageurl="phpimages/exportxls.gif" imagewidth="16" imageheight="16"/>
+		<phrase id="exporttoexceltext" value="Excel"/>
+		<phrase id="exporttohtml" value="Export to HTML" imageurl="phpimages/exporthtml.gif" imagewidth="16" imageheight="16"/>
+		<phrase id="exporttohtmltext" value="HTML"/>
+		<phrase id="exporttopdf" value="Export to PDF" imageurl="phpimages/exportpdf.gif" imagewidth="16" imageheight="16"/>
+		<phrase id="exporttopdftext" value="PDF"/>
+		<phrase id="exporttoword" value="Export to Word" imageurl="phpimages/exportdoc.gif" imagewidth="16" imageheight="16"/>
+		<phrase id="exporttowordtext" value="Word"/>
+		<phrase id="exporttoxml" value="Export to XML" imageurl="phpimages/exportxml.gif" imagewidth="16" imageheight="16"/>
+		<phrase id="exporttoxmltext" value="XML"/>
+		<phrase id="failedtosendmail" value="Failed to send mail. "/>
+		<phrase id="fieldname" value="Field Name"/>
+		<phrase id="fieldrequiredindicator" value="&lt;span class=&quot;ewRequired&quot;&gt;&amp;nbsp;*&lt;/span&gt;"/>
+		<phrase id="filenotfound" value="File not found"/><!-- *** characters need to be supported by EW_TMP_IMAGE_FONT *** -->
+		<phrase id="overwritebtn" value="Overwrite"/>
+		<phrase id="overwritelink" value="Overwrite"/>
+		<phrase id="forgotpwd" value="Forgot Password"/>
+		<phrase id="goback" value="Go Back"/>
+		<phrase id="gridaddlink" value="Grid Add"/>
+		<phrase id="gridcancellink" value="Cancel" imageurl="phpimages/cancel.gif" imagewidth="16" imageheight="16"/>
+		<phrase id="grideditlink" value="Grid Edit"/>
+		<phrase id="gridinsertlink" value="Insert" imageurl="phpimages/insert.gif" imagewidth="16" imageheight="16"/>
+		<phrase id="gridsavelink" value="Save" imageurl="phpimages/update.gif" imagewidth="16" imageheight="16"/>
+		<phrase id="hidehighlight" value="Hide highlight" client="1"/>
+		<phrase id="homepage" value="Home"/>
+		<phrase id="incorrectcreditcard" value="Incorrect credit card number"/>
+		<phrase id="incorrectdateymd" value="Incorrect date, format = yyyy%smm%sdd"/>
+		<phrase id="incorrectdatemdy" value="Incorrect date, format = mm%sdd%syyyy"/>
+		<phrase id="incorrectdatedmy" value="Incorrect date, format = dd%smm%syyyy"/>
+		<phrase id="incorrectshortdateymd" value="Incorrect date, format = yy%smm%sdd"/>
+		<phrase id="incorrectshortdatemdy" value="Incorrect date, format = mm%sdd%syy"/>
+		<phrase id="incorrectshortdatedmy" value="Incorrect date, format = dd%smm%syy"/>
+		<phrase id="incorrectemail" value="Incorrect email" client="1"/>
+		<phrase id="incorrectfield" value="Incorrect field" client="1"/>
+		<phrase id="incorrectfloat" value="Incorrect floating point number" client="1"/>
+		<phrase id="incorrectguid" value="Incorrect GUID" client="1"/>
+		<phrase id="incorrectinteger" value="Incorrect integer" client="1"/>
+		<phrase id="incorrectphone" value="Incorrect phone number" client="1"/>
+		<phrase id="incorrectregexp" value="Regular expression not matched" client="1"/>
+		<phrase id="incorrectrange" value="Number must be between %1 and %2" client="1"/>
+		<phrase id="incorrectssn" value="Incorrect social security number" client="1"/>
+		<phrase id="incorrecttime" value="Incorrect time (hh:mm:ss)" client="1"/>
+		<phrase id="incorrectzip" value="Incorrect ZIP code" client="1"/>
+		<phrase id="inlineaddlink" value="Inline Add"/>
+		<phrase id="inlinecopylink" value="Inline Copy" imageurl="phpimages/inlinecopy.gif" imagewidth="16" imageheight="16"/>
+		<phrase id="inlineeditlink" value="Inline Edit" imageurl="phpimages/inlineedit.gif" imagewidth="16" imageheight="16"/>
+		<phrase id="insertcancelled" value="Insert cancelled"/>
+		<phrase id="insertfailed" value="Insert failed" client="1"/>
+		<phrase id="insertlink" value="Insert" imageurl="phpimages/insert.gif" imagewidth="16" imageheight="16"/>
+		<phrase id="insertsuccess" value="Insert succeeded"/>
+		<phrase id="invalidemail" value="Invalid Email"/>
+		<phrase id="invalidfield" value="Invalid Field"/>
+		<phrase id="invalidkeyvalue" value="Invalid key value"/>
+		<phrase id="invalidrecord" value="Invalid Record! Key is null" client="1"/>
+		<phrase id="invalidparameter" value="Invalid Parameter"/>
+		<phrase id="invalidpassword" value="Invalid Password"/>
+		<phrase id="invalidnewpassword" value="Invalid New Password"/>
+		<phrase id="invaliduidpwd" value="Incorrect user ID or password"/>
+		<phrase id="keep" value="Keep"/>
+		<phrase id="language" value="Language"/>
+		<phrase id="loading" value="Loading..." client="1"/>
+		<phrase id="login" value="Login"/>
+		<phrase id="logincancelled" value="Login cancelled"/>
+		<phrase id="loginpage" value="Login"/>
+		<phrase id="logout" value="Logout"/>
+		<phrase id="masterrecord" value="Master Record: "/>
+		<phrase id="maxfilesize" value="Max. file size (%s bytes) exceeded." client="1"/>
+		<phrase id="messageok" value="OK" client="1"/>
+		<phrase id="mismatchpassword" value="Mismatch Password" client="1"/>
+		<phrase id="missinglookuptablename" value="Missing lookup table name"/>
+		<phrase id="missingdisplayfieldname" value="Missing display field name"/>
+		<phrase id="missingdisplayfieldvalue" value="Missing display field value"/>
+		<phrase id="missinguserlevelid" value="Missing User Level ID"/>
+		<phrase id="missinguserlevelname" value="Missing User Level name"/>
+		<phrase id="mobilemenu" value="Menu"/>
+		<phrase id="multiplemasterdetails" value="Master/Detail"/>
+		<phrase id="new" value="New"/>
+		<phrase id="newpassword" value="New Password"/>
+		<phrase id="newvalue" value="New Value"/>
+		<phrase id="next" value="Next"/>
+		<phrase id="noaddrecord" value="No records to be added" client="1"/>
+		<phrase id="nofieldselected" value="No field selected for update" client="1"/>
+		<phrase id="nopermission" value="You do not have permission to access the page."/>
+		<phrase id="noaddpermission" value="You do not have permission to add the record."/>
+		<phrase id="nodeletepermission" value="You do not have permission to delete the record."/>
+		<phrase id="noeditpermission" value="You do not have permission to edit the record."/>
+		<phrase id="norecord" value="No records found"/>
+		<phrase id="norecordforkey" value="No record found for key = "/>
+		<phrase id="norecordselected" value="No records selected" client="1"/>
+		<phrase id="notablegenerated" value="No tables generated"/>
+		<phrase id="nouserlevel" value="No user level settings."/>
+		<phrase id="of" value="of"/>
+		<phrase id="old" value="Old"/>
+		<phrase id="oldpassword" value="Old Password"/>
+		<phrase id="optionalreadyexist" value="Option already exists"/>
+		<phrase id="page" value="Page"/>
+		<phrase id="pagerfirst" value="First"/>
+		<phrase id="pagerlast" value="Last"/>
+		<phrase id="pagernext" value="Next"/>
+		<phrase id="pagerprevious" value="Previous"/>
+		<phrase id="password" value="Password"/>
+		<phrase id="passwordrequest" value="Password Request"/>
+		<phrase id="passwordchanged" value="Password Changed"/>
+		<phrase id="passwordexpired" value="Password Expired. Please change password."/>
+		<phrase id="permission" value="Permissions"/>
+		<phrase id="permissionaddcopy" value="Add/Copy"/>
+		<phrase id="permissiondelete" value="Delete"/>
+		<phrase id="permissionedit" value="Edit"/>
+		<phrase id="permissionlistsearchview" value="List/Search/View"/>
+		<phrase id="permissionlist" value="List"/>
+		<phrase id="permissionsearch" value="Search"/>
+		<phrase id="permissionview" value="View"/>
+		<phrase id="pickdate" value="Pick a date"/>
+		<phrase id="pleaseselect" value="Please Select"/>
+		<phrase id="pleasewait" value="Please wait..." client="1"/>
+		<phrase id="primarykeyunspecified" value="Primary key unspecified"/>
+		<phrase id="printerfriendly" value="Printer Friendly" imageurl="phpimages/print.gif" imagewidth="16" imageheight="16"/>
+		<phrase id="printerfriendlytext" value="Printer Friendly"/>
+		<phrase id="prev" value="Prev"/>
+		<phrase id="pwdemailsent" value="Password sent to your email"/>
+		<phrase id="resetpwdemailsent" value="The reset password email has been sent to you"/>
+		<phrase id="quicksearch" value="Quick Search"/>
+		<phrase id="quicksearchbtn" value="Search"/>
+		<phrase id="record" value="Records"/>
+		<phrase id="recordchangedbyotheruser" value="Data has been changed by other user. Click [Reload] to retrieve the changed data (your data in the form will be overwritten) or click [Overwrite] to overwrite the changed data."/>
+		<phrase id="recorddeleted" value="record(s) deleted"/>
+		<phrase id="recordinserted" value="record(s) inserted"/>
+		<phrase id="recordupdated" value="record(s) updated"/>
+		<phrase id="recordsperpage" value="Page Size"/>
+		<phrase id="register" value="Register"/>
+		<phrase id="registerbtn" value="Register"/>
+		<phrase id="registersuccess" value="Registration succeeded"/>
+		<phrase id="registersuccessactivate" value="Registration succeeded. An email has been sent to your email address, please click the link in the email to activate your account."/>
+		<phrase id="registerpage" value="Registration"/>
+		<phrase id="relatedrecordrequired" value="You cannot add or update a record because the foreign key value does not exist in the master table '%t'"/>
+		<phrase id="relatedrecordexists" value="You cannot delete a record because related records exist in the detail table '%t'"/>
+		<phrase id="reloadbtn" value="Reload"/>
+		<phrase id="reloadlink" value="Reload"/>
+		<phrase id="rememberme" value="Remember me"/>
+		<phrase id="remove" value="Remove"/>
+		<phrase id="replace" value="Replace"/>
+		<phrase id="report" value="Report"/>
+		<phrase id="requestpwdpage" value="Request Password"/>
+		<phrase id="reset" value="Reset"/>
+		<phrase id="resetsearch" value="Reset"/>
+		<phrase id="rptavg" value="Average"/>
+		<phrase id="rptdtlrec" value="Detail Records"/>
+		<phrase id="rptgrandtotal" value="Grand Total"/>
+		<phrase id="rptmax" value="Maximum"/>
+		<phrase id="rptmin" value="Minimum"/>
+		<phrase id="rptsum" value="Sum"/>
+		<phrase id="rptsumhead" value="Summary for"/>
+		<phrase id="saveusername" value="Save my user name"/>
+		<phrase id="search" value="Search"/>
+		<phrase id="sendemailbtn" value="Send"/>
+		<phrase id="sendemailsuccess" value="Email sent successfully" client="1"/>
+		<phrase id="sendpwd" value="Send"/>
+		<phrase id="sequencenumber" value="%s."/>
+		<phrase id="showall" value="Show all"/>
+		<phrase id="showhighlight" value="Show highlight" client="1"/>
+		<phrase id="srchlegend" value=""/>
+		<phrase id="table" value="TABLE"/>
+		<phrase id="tbltypetable" value="Table: "/>
+		<phrase id="tbltypeview" value="View: "/>
+		<phrase id="tbltypecustomview" value="Custom View: "/>
+		<phrase id="tbltypereport" value="Report: "/>
+		<phrase id="to" value="to"/>
+		<phrase id="total" value="Total"/>
+		<phrase id="unauthorizeduserid" value="The current user (%c) is not authorized to assign the user ID (%u)."/>
+		<phrase id="unauthorizedparentuserid" value="The current user (%c) is not authorized to assign the parent user ID (%p)."/>
+		<phrase id="unauthorizedmasteruserid" value="The current user (%c) is not authorized to insert the record. Master filter: %f"/>
+		<phrase id="unmatchedvalue" value="Value does not exist" imageurl="phpimages/warn.gif" imagewidth="16" imageheight="15"/>
+		<phrase id="update" value="Update"/>
+		<phrase id="updatebtn" value="Update"/>
+		<phrase id="updatecancelled" value="Update cancelled"/>
+		<phrase id="updatefailed" value="Update failed"/>
+		<phrase id="updatelink" value="Update" imageurl="phpimages/update.gif" imagewidth="16" imageheight="16"/>
+		<phrase id="updateselectedlink" value="Update Selected Records"/>
+		<phrase id="updatesuccess" value="Update succeeded"/>
+		<phrase id="uploading" value="Uploading..." client="1"/>
+		<phrase id="uploadstart" value="Start" client="1"/>
+		<phrase id="uploadcancel" value="Cancel" client="1"/>
+		<phrase id="uploaddelete" value="Delete" client="1"/>
+		<phrase id="uploadoverwrite" value="Overwrite old file?" client="1"/>
+		<phrase id="uploaderrmsg1" value="The uploaded file exceeds the upload_max_filesize directive in php.ini"/>
+		<phrase id="uploaderrmsg2" value="The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form"/>
+		<phrase id="uploaderrmsg3" value="The uploaded file was only partially uploaded"/>
+		<phrase id="uploaderrmsg4" value="No file was uploaded"/>
+		<phrase id="uploaderrmsg6" value="Missing a temporary folder"/>
+		<phrase id="uploaderrmsg7" value="Failed to write file to disk"/>
+		<phrase id="uploaderrmsg8" value="A PHP extension stopped the file upload"/>
+		<phrase id="uploaderrmsgpostmaxsize" value="The uploaded file exceeds the post_max_size directive in php.ini"/>
+		<phrase id="uploaderrmsgmaxfilesize" value="File is too big"/>
+		<phrase id="uploaderrmsgminfilesize" value="File is too small"/>
+		<phrase id="uploaderrmsgacceptfiletypes" value="Filetype not allowed"/>
+		<phrase id="uploaderrmsgmaxnumberoffiles" value="Maximum number of files exceeded" client="1"/>
+		<phrase id="uploaderrmsgmaxwidth" value="Image exceeds maximum width"/>
+		<phrase id="uploaderrmsgminwidth" value="Image requires a minimum width"/>
+		<phrase id="uploaderrmsgmaxheight" value="Image exceeds maximum height"/>
+		<phrase id="uploaderrmsgminheight" value="Image requires a minimum height"/>
+		<phrase id="uploaderrmsgmaxfilelength" value="Total length of file names exceeds field length" client="1"/>
+		<phrase id="updatevalue" value="Update"/>
+		<phrase id="useremail" value="Email"/>
+		<phrase id="userexists" value="User already exists"/>
+		<phrase id="userlevel" value="User Level: "/>
+		<phrase id="userleveladministratorname" value="User level name for user level -1 must be 'Administrator'" client="1"/>
+		<phrase id="userlevelpermission" value="User Level Permissions"/>
+		<phrase id="userlevelidinteger" value="User Level ID must be integer" client="1"/>
+		<phrase id="userleveldefaultname" value="User level name for user level 0 must be 'Default'" client="1"/>
+		<phrase id="userlevelidincorrect" value="User defined User Level ID must be larger than 0" client="1"/>
+		<phrase id="userlevelnameincorrect" value="User defined User Level name cannot be 'Administrator' or 'Default'" client="1"/>
+		<phrase id="userloggedin" value="User '%u' already logged in!"/>
+		<phrase id="username" value="User Name"/>
+		<phrase id="userprofilecorrupted" value="User profile is corrupted. Please logout and login again"/>
+		<phrase id="view" value="View"/>
+		<phrase id="viewlink" value="View" imageurl="phpimages/view.gif" imagewidth="16" imageheight="16"/>
+		<phrase id="viewpageaddlink" value="Add"/>
+		<phrase id="viewpagecopylink" value="Copy"/>
+		<phrase id="viewpagedeletelink" value="Delete"/>
+		<phrase id="viewpagedetaillink" value=""/>
+		<phrase id="viewpageeditlink" value="Edit"/>
+		<phrase id="wrongfiletype" value="File type is not allowed." client="1"/>
+		<phrase id="tableorview" value="Tables"/>
+		<phrase id="=" value=""/>
+		<phrase id="&lt;&gt;" value="&lt;&gt;"/>
+		<phrase id="&lt;" value="&lt;"/>
+		<phrase id="&lt;=" value="&lt;="/>
+		<phrase id="&gt;" value="&gt;"/>
+		<phrase id="&gt;=" value="&gt;="/>
+		<phrase id="like" value="contains"/>
+		<phrase id="not like" value="not contains"/>
+		<phrase id="starts with" value="starts with"/>
+		<phrase id="ends with" value="ends with"/>
+		<phrase id="is null" value="is null"/>
+		<phrase id="is not null" value="is not null"/>
+		<phrase id="between" value="between"/>
+		<phrase id="and" value="and"/>
+		<phrase id="or" value="or"/>
+	</global>
+	<project><phrase id="bodytitle" value="Social Pensioner Information System"/>
+<phrase id="footertext" value="&amp;copy;2015 e.World Technology Ltd. All rights reserved."/>
+<menu id="31"><phrase id="menutext" value="Main Menu"/>
+</menu>
+<menu id="23"><phrase id="menutext" value="Pensioner Monitoring"/>
+</menu>
+<menu id="24"><phrase id="menutext" value="Representative"/>
+</menu>
+<menu id="25"><phrase id="menutext" value="Support"/>
+</menu>
+<menu id="26"><phrase id="menutext" value="Updates"/>
+</menu>
+<menu id="22"><phrase id="menutext" value="Pension Payroll"/>
+</menu>
+<menu id="32"><phrase id="menutext" value="System Libraries"/>
+</menu>
+<menu id="34"><phrase id="menutext" value="PSGC"/>
+</menu>
+<menu id="15"><phrase id="menutext" value="Regions"/>
+</menu>
+<menu id="14"><phrase id="menutext" value="Provinces"/>
+</menu>
+<menu id="5"><phrase id="menutext" value="Cities"/>
+</menu>
+<menu id="4"><phrase id="menutext" value="Barangay"/>
+</menu>
+<menu id="35"><phrase id="menutext" value="Calendar-Related"/>
+</menu>
+<menu id="21"><phrase id="menutext" value="Year"/>
+</menu>
+<menu id="11"><phrase id="menutext" value="Month"/>
+</menu>
+<menu id="1"><phrase id="menutext" value="Affliation"/>
+</menu>
+<menu id="2"><phrase id="menutext" value="Arrangement"/>
+</menu>
+<menu id="3"><phrase id="menutext" value="Assistive"/>
+</menu>
+<menu id="6"><phrase id="menutext" value="Civi lstatus"/>
+</menu>
+<menu id="7"><phrase id="menutext" value="lib delistreason"/>
+</menu>
+<menu id="8"><phrase id="menutext" value="Disability"/>
+</menu>
+<menu id="9"><phrase id="menutext" value="Family Support"/>
+</menu>
+<menu id="10"><phrase id="menutext" value="Illness"/>
+</menu>
+<menu id="12"><phrase id="menutext" value="Payment mode"/>
+</menu>
+<menu id="13"><phrase id="menutext" value="Physical condition"/>
+</menu>
+<menu id="16"><phrase id="menutext" value="Relationship"/>
+</menu>
+<menu id="17"><phrase id="menutext" value="Rule"/>
+</menu>
+<menu id="18"><phrase id="menutext" value="Status"/>
+</menu>
+<menu id="19"><phrase id="menutext" value="Support"/>
+</menu>
+<menu id="20"><phrase id="menutext" value="lib utilizationdetail"/>
+</menu>
+<menu id="33"><phrase id="menutext" value="Access Controls"/>
+</menu>
+<menu id="27"><phrase id="menutext" value="User Accounts"/>
+</menu>
+<menu id="28"><phrase id="menutext" value="Permissions"/>
+</menu>
+<menu id="29"><phrase id="menutext" value="User Levels"/>
+</menu>
+<menu id="30"><phrase id="menutext" value="Audittrail"/>
+</menu>
+<table id="audittrail"><phrase id="tblcaption" value="Audittrail"/>
+<field id="id"><phrase id="fldcaption" value="id"/>
+</field>
+<field id="datetime"><phrase id="fldcaption" value="datetime"/>
+</field>
+<field id="script"><phrase id="fldcaption" value="script"/>
+</field>
+<field id="user"><phrase id="fldcaption" value="user"/>
+</field>
+<field id="action"><phrase id="fldcaption" value="action"/>
+</field>
+<field id="_table"><phrase id="fldcaption" value="table"/>
+</field>
+<field id="_field"><phrase id="fldcaption" value="field"/>
+</field>
+<field id="keyvalue"><phrase id="fldcaption" value="keyvalue"/>
+</field>
+<field id="oldvalue"><phrase id="fldcaption" value="oldvalue"/>
+</field>
+<field id="newvalue"><phrase id="fldcaption" value="newvalue"/>
+</field>
+</table>
+<table id="lib_affliation"><phrase id="tblcaption" value="Affliations"/>
+<field id="affliationid"><phrase id="fldcaption" value="affliation ID"/>
+</field>
+<field id="aff_description"><phrase id="fldcaption" value="aff description"/>
+</field>
+</table>
+<table id="lib_arrangement"><phrase id="tblcaption" value="Arrangement"/>
+<field id="arrangementid"><phrase id="fldcaption" value="Arrangement ID"/>
+</field>
+<field id="description"><phrase id="fldcaption" value="Description"/>
+</field>
+</table>
+<table id="lib_assistive"><phrase id="tblcaption" value="Assistive"/>
+<field id="assistiveid"><phrase id="fldcaption" value="assistive ID"/>
+</field>
+<field id="device"><phrase id="fldcaption" value="Device"/>
+</field>
+</table>
+<table id="lib_brgy"><phrase id="tblcaption" value="Barangay"/>
+<field id="brgy_name"><phrase id="fldcaption" value="brgy name"/>
+</field>
+<field id="city_code"><phrase id="fldcaption" value="city code"/>
+</field>
+<field id="brgy_code"><phrase id="fldcaption" value="brgy code"/>
+</field>
+<field id="district_no"><phrase id="fldcaption" value="district no"/>
+</field>
+</table>
+<table id="lib_cities"><phrase id="tblcaption" value="City"/>
+<field id="city_code"><phrase id="fldcaption" value="city code"/>
+</field>
+<field id="city_name"><phrase id="fldcaption" value="city name"/>
+</field>
+<field id="prov_code"><phrase id="fldcaption" value="prov code"/>
+</field>
+<field id="district_no"><phrase id="fldcaption" value="district no"/>
+</field>
+<field id="district_name"><phrase id="fldcaption" value="district name"/>
+</field>
+<field id="is_urban"><phrase id="fldcaption" value="is Urban"/>
+</field>
+<field id="locked"><phrase id="fldcaption" value="locked"/>
+</field>
+</table>
+<table id="lib_civilstatus"><phrase id="tblcaption" value="Civil Status"/>
+<field id="maritalid"><phrase id="fldcaption" value="Marital ID"/>
+</field>
+<field id="description"><phrase id="fldcaption" value="Description"/>
+</field>
+</table>
+<table id="lib_delistreason"><phrase id="tblcaption" value="Desliting Reasons"/>
+<field id="delreasonid"><phrase id="fldcaption" value="del Reason ID"/>
+</field>
+<field id="reason"><phrase id="fldcaption" value="Reason"/>
+</field>
+</table>
+<table id="lib_disability"><phrase id="tblcaption" value="Disability"/>
+<field id="disabilityid"><phrase id="fldcaption" value="disability ID"/>
+</field>
+<field id="description"><phrase id="fldcaption" value="Description"/>
+</field>
+</table>
+<table id="lib_famsupport"><phrase id="tblcaption" value="Family Support"/>
+<field id="kindsupid"><phrase id="fldcaption" value="Kind Sup ID"/>
+</field>
+<field id="supportkind"><phrase id="fldcaption" value="Support Kind"/>
+</field>
+</table>
+<table id="lib_illness"><phrase id="tblcaption" value="Illness"/>
+<field id="illnessid"><phrase id="fldcaption" value="illness ID"/>
+</field>
+<field id="description"><phrase id="fldcaption" value="description"/>
+</field>
+</table>
+<table id="lib_month"><phrase id="tblcaption" value="Months"/>
+<field id="monthid"><phrase id="fldcaption" value="Month ID"/>
+</field>
+<field id="desc"><phrase id="fldcaption" value="desc"/>
+</field>
+<field id="qtrid"><phrase id="fldcaption" value="Qtr ID"/>
+</field>
+</table>
+<table id="lib_paymentmode"><phrase id="tblcaption" value="Payment Mode"/>
+<field id="paymentmodeid"><phrase id="fldcaption" value="paymentmode ID"/>
+</field>
+<field id="description"><phrase id="fldcaption" value="description"/>
+</field>
+<field id="signatory"><phrase id="fldcaption" value="Signatory"/>
+</field>
+</table>
+<table id="lib_physical_condition"><phrase id="tblcaption" value="Physical Condition"/>
+<field id="physconditionid"><phrase id="fldcaption" value="physcondition ID"/>
+</field>
+<field id="physconditionname"><phrase id="fldcaption" value="physcondition Name"/>
+</field>
+<field id="created_by"><phrase id="fldcaption" value="created by"/>
+</field>
+<field id="date_created"><phrase id="fldcaption" value="date created"/>
+</field>
+<field id="modified_by"><phrase id="fldcaption" value="modified by"/>
+</field>
+<field id="date_modified"><phrase id="fldcaption" value="date modified"/>
+</field>
+<field id="deleted"><phrase id="fldcaption" value="DELETED"/>
+</field>
+</table>
+<table id="lib_provinces"><phrase id="tblcaption" value="Provinces"/>
+<field id="prov_code"><phrase id="fldcaption" value="prov code"/>
+</field>
+<field id="prov_name"><phrase id="fldcaption" value="prov name"/>
+</field>
+<field id="region_code"><phrase id="fldcaption" value="region code"/>
+</field>
+</table>
+<table id="lib_regions"><phrase id="tblcaption" value="Regions"/>
+<field id="region_code"><phrase id="fldcaption" value="region code"/>
+</field>
+<field id="region_name"><phrase id="fldcaption" value="region name"/>
+</field>
+<field id="region_nick"><phrase id="fldcaption" value="region nick"/>
+</field>
+<field id="region_director"><phrase id="fldcaption" value="region director"/>
+</field>
+<field id="philpost_director"><phrase id="fldcaption" value="philpost director"/>
+</field>
+</table>
+<table id="lib_relationship"><phrase id="tblcaption" value="Relationships"/>
+<field id="relationid"><phrase id="fldcaption" value="Relation ID"/>
+</field>
+<field id="description"><phrase id="fldcaption" value="Description"/>
+</field>
+</table>
+<table id="lib_rule"><phrase id="tblcaption" value="Rules"/>
+<field id="ruleid"><phrase id="fldcaption" value="rule ID"/>
+</field>
+<field id="rule_age"><phrase id="fldcaption" value="rule age"/>
+</field>
+<field id="rule_affiliation"><phrase id="fldcaption" value="rule affiliation"/>
+</field>
+<field id="rule_active"><phrase id="fldcaption" value="rule active"/>
+</field>
+<field id="created_by"><phrase id="fldcaption" value="created by"/>
+</field>
+<field id="date_created"><phrase id="fldcaption" value="date created"/>
+</field>
+<field id="modified_by"><phrase id="fldcaption" value="modified by"/>
+</field>
+<field id="date_modified"><phrase id="fldcaption" value="date modified"/>
+</field>
+<field id="deleted"><phrase id="fldcaption" value="DELETED"/>
+</field>
+</table>
+<table id="lib_status"><phrase id="tblcaption" value="Statuses"/>
+<field id="statusid"><phrase id="fldcaption" value="status ID"/>
+</field>
+<field id="status"><phrase id="fldcaption" value="status"/>
+</field>
+</table>
+<table id="lib_support"><phrase id="tblcaption" value="Support"/>
+<field id="supportid"><phrase id="fldcaption" value="Support ID"/>
+</field>
+<field id="supportkind"><phrase id="fldcaption" value="Support Kind"/>
+</field>
+</table>
+<table id="lib_utilizationdetail"><phrase id="tblcaption" value="Utilization Detail"/>
+<field id="utilizationdetailid"><phrase id="fldcaption" value="Utilization Detail ID"/>
+</field>
+<field id="description"><phrase id="fldcaption" value="description"/>
+</field>
+</table>
+<table id="lib_year"><phrase id="tblcaption" value="Years"/>
+<field id="year"><phrase id="fldcaption" value="Year"/>
+</field>
+</table>
+<table id="tbl_pension_payroll"><phrase id="tblcaption" value="Pensioner Payroll"/>
+<field id="payrollid"><phrase id="fldcaption" value="Payroll ID"/>
+</field>
+<field id="payrollyear"><phrase id="fldcaption" value="Payroll Year"/>
+</field>
+<field id="amount"><phrase id="fldcaption" value="Amount"/>
+</field>
+<field id="approved"><phrase id="fldcaption" value="Approved"/>
+<phrase id="fldtagvalue1" value="0"/>
+<phrase id="fldtagcaption1" value="0 - No"/>
+<phrase id="fldtagvalue2" value="1"/>
+<phrase id="fldtagcaption2" value="1 - Yes"/>
+</field>
+<field id="claimed"><phrase id="fldcaption" value="Claimed"/>
+<phrase id="fldtagvalue1" value="0"/>
+<phrase id="fldtagcaption1" value="0 - No"/>
+<phrase id="fldtagvalue2" value="1"/>
+<phrase id="fldtagcaption2" value="1 - Yes"/>
+</field>
+<field id="pensionerid"><phrase id="fldcaption" value="Pensioner"/>
+</field>
+<field id="paymentmodeid"><phrase id="fldcaption" value="Payment Mode"/>
+</field>
+<field id="cmonth"><phrase id="fldcaption" value="Month"/>
+</field>
+<field id="createdby"><phrase id="fldcaption" value="Createdby"/>
+</field>
+<field id="createddate"><phrase id="fldcaption" value="Created Date"/>
+</field>
+<field id="updatedby"><phrase id="fldcaption" value="Updated By"/>
+</field>
+<field id="updateddate"><phrase id="fldcaption" value="Updated Date"/>
+</field>
+</table>
+<table id="tbl_pensioner"><phrase id="tblcaption" value="Pensioners"/>
+<field id="seniorid"><phrase id="fldcaption" value="Senior ID"/>
+</field>
+<field id="pensionerid"><phrase id="fldcaption" value="Pensioner ID"/>
+</field>
+<field id="inclusiondate"><phrase id="fldcaption" value="Inclusion Date"/>
+</field>
+<field id="hh_id"><phrase id="fldcaption" value="HH ID"/>
+</field>
+<field id="osca_id"><phrase id="fldcaption" value="OSCA ID"/>
+</field>
+<field id="placeissued"><phrase id="fldcaption" value="Place Issued"/>
+</field>
+<field id="dateissued"><phrase id="fldcaption" value="Date Issued"/>
+</field>
+<field id="firstname"><phrase id="fldcaption" value="Firstname"/>
+</field>
+<field id="middlename"><phrase id="fldcaption" value="Middlename"/>
+</field>
+<field id="lastname"><phrase id="fldcaption" value="Lastname"/>
+</field>
+<field id="extname"><phrase id="fldcaption" value="Extname"/>
+</field>
+<field id="birthdate"><phrase id="fldcaption" value="Birthdate"/>
+</field>
+<field id="sex"><phrase id="fldcaption" value="sex"/>
+<phrase id="fldtagvalue1" value="0"/>
+<phrase id="fldtagcaption1" value="0 - Male"/>
+<phrase id="fldtagvalue2" value="1"/>
+<phrase id="fldtagcaption2" value="1 - Female"/>
+</field>
+<field id="maritalid"><phrase id="fldcaption" value="Marital Status"/>
+</field>
+<field id="affliationid"><phrase id="fldcaption" value="Affiliation"/>
+</field>
+<field id="psgc_region"><phrase id="fldcaption" value="Region"/>
+</field>
+<field id="psgc_province"><phrase id="fldcaption" value="Province"/>
+</field>
+<field id="psgc_municipality"><phrase id="fldcaption" value="City/Municipality"/>
+</field>
+<field id="psgc_brgy"><phrase id="fldcaption" value="Barangay"/>
+</field>
+<field id="given_add"><phrase id="fldcaption" value="House No."/>
+</field>
+<field id="status"><phrase id="fldcaption" value="Status"/>
+</field>
+<field id="paymentmodeid"><phrase id="fldcaption" value="Payment Mode"/>
+</field>
+<field id="approved"><phrase id="fldcaption" value="Approved"/>
+</field>
+<field id="approvedby"><phrase id="fldcaption" value="Approved By"/>
+</field>
+<field id="dateapproved"><phrase id="fldcaption" value="Date Approved"/>
+</field>
+<field id="arrangementid"><phrase id="fldcaption" value="Arrangements"/>
+</field>
+<field id="is_4ps"><phrase id="fldcaption" value="is 4ps"/>
+<phrase id="fldtagvalue1" value="0"/>
+<phrase id="fldtagcaption1" value="0 - No"/>
+<phrase id="fldtagvalue2" value="1"/>
+<phrase id="fldtagcaption2" value="1 - Yes"/>
+</field>
+<field id="abandoned"><phrase id="fldcaption" value="Abandoned"/>
+<phrase id="fldtagvalue1" value="0"/>
+<phrase id="fldtagcaption1" value="0 - No"/>
+<phrase id="fldtagvalue2" value="1"/>
+<phrase id="fldtagcaption2" value="1 - Yes"/>
+</field>
+<field id="createdby"><phrase id="fldcaption" value="Createdby"/>
+</field>
+<field id="createddate"><phrase id="fldcaption" value="Created Date"/>
+</field>
+<field id="updatedby"><phrase id="fldcaption" value="Updated By"/>
+</field>
+<field id="updateddate"><phrase id="fldcaption" value="Updated Date"/>
+</field>
+<field id="updateremarks"><phrase id="fldcaption" value="Update Remarks"/>
+</field>
+<field id="codegen"><phrase id="fldcaption" value="code Gen"/>
+</field>
+<field id="picture"><phrase id="fldcaption" value="Picture"/>
+</field>
+<field id="picturename"><phrase id="fldcaption" value="picturename"/>
+</field>
+<field id="picturetype"><phrase id="fldcaption" value="picturetype"/>
+</field>
+<field id="picturewidth"><phrase id="fldcaption" value="picturewidth"/>
+</field>
+<field id="pictureheight"><phrase id="fldcaption" value="pictureheight"/>
+</field>
+<field id="picturesize"><phrase id="fldcaption" value="picturesize"/>
+</field>
+<field id="hyperlink"><phrase id="fldcaption" value="hyperlink"/>
+</field>
+</table>
+<table id="tbl_representative"><phrase id="tblcaption" value="Representatives"/>
+<field id="authid"><phrase id="fldcaption" value="auth ID"/>
+</field>
+<field id="pensionerid"><phrase id="fldcaption" value="Pensioner ID"/>
+</field>
+<field id="fname"><phrase id="fldcaption" value="Firstname"/>
+</field>
+<field id="mname"><phrase id="fldcaption" value="Middlename"/>
+</field>
+<field id="lname"><phrase id="fldcaption" value="Lastname"/>
+</field>
+<field id="reltopensioner"><phrase id="fldcaption" value="Relationship"/>
+</field>
+<field id="contactno"><phrase id="fldcaption" value="Contact No"/>
+</field>
+<field id="auth_region"><phrase id="fldcaption" value="Region"/>
+</field>
+<field id="auth_prov"><phrase id="fldcaption" value="Province"/>
+</field>
+<field id="auth_city"><phrase id="fldcaption" value="City/Municipality"/>
+</field>
+<field id="auth_brgy"><phrase id="fldcaption" value="Barangay"/>
+</field>
+<field id="houseno"><phrase id="fldcaption" value="House No"/>
+</field>
+<field id="createdby"><phrase id="fldcaption" value="Created By"/>
+</field>
+<field id="createddate"><phrase id="fldcaption" value="Created Date"/>
+</field>
+<field id="updatedby"><phrase id="fldcaption" value="Updated By"/>
+</field>
+<field id="updateddate"><phrase id="fldcaption" value="Updated Date"/>
+</field>
+</table>
+<table id="tbl_support"><phrase id="tblcaption" value="Support"/>
+<field id="supportid"><phrase id="fldcaption" value="support ID"/>
+</field>
+<field id="pensionerid"><phrase id="fldcaption" value="Pensioner ID"/>
+</field>
+<field id="family_support"><phrase id="fldcaption" value="Family Support"/>
+<phrase id="fldtagvalue1" value="0"/>
+<phrase id="fldtagcaption1" value="0 - No"/>
+<phrase id="fldtagvalue2" value="1"/>
+<phrase id="fldtagcaption2" value="1 - Yes"/>
+</field>
+<field id="kindsupid"><phrase id="fldcaption" value="Kind of Support"/>
+</field>
+<field id="meals"><phrase id="fldcaption" value="Meals a Day"/>
+</field>
+<field id="disability"><phrase id="fldcaption" value="Disabled?"/>
+<phrase id="fldtagvalue1" value="0"/>
+<phrase id="fldtagcaption1" value="0 - No"/>
+<phrase id="fldtagvalue2" value="1"/>
+<phrase id="fldtagcaption2" value="1 - Yes"/>
+</field>
+<field id="disabilityid"><phrase id="fldcaption" value="Type of Disability"/>
+</field>
+<field id="immobile"><phrase id="fldcaption" value="Immobile?"/>
+<phrase id="fldtagvalue1" value="0"/>
+<phrase id="fldtagcaption1" value="0 - No"/>
+<phrase id="fldtagvalue2" value="1"/>
+<phrase id="fldtagcaption2" value="1 - Yes"/>
+</field>
+<field id="assistiveid"><phrase id="fldcaption" value="Type of Assistive Device"/>
+</field>
+<field id="preex_illness"><phrase id="fldcaption" value="Pre Exisint Illness?"/>
+<phrase id="fldtagvalue1" value="0"/>
+<phrase id="fldtagcaption1" value="0 - No"/>
+<phrase id="fldtagvalue2" value="1"/>
+<phrase id="fldtagcaption2" value="1 - Yes"/>
+</field>
+<field id="illnessid"><phrase id="fldcaption" value="Type of Illnes"/>
+</field>
+<field id="physconditionid"><phrase id="fldcaption" value="Physical Condition"/>
+</field>
+<field id="createdby"><phrase id="fldcaption" value="Created By"/>
+</field>
+<field id="createddate"><phrase id="fldcaption" value="Created Date"/>
+</field>
+<field id="updatedby"><phrase id="fldcaption" value="Updated By"/>
+</field>
+<field id="updateddate"><phrase id="fldcaption" value="Updated Date"/>
+</field>
+</table>
+<table id="tbl_updates"><phrase id="tblcaption" value="Updates"/>
+<field id="updatesid"><phrase id="fldcaption" value="updates ID"/>
+</field>
+<field id="pensionerid"><phrase id="fldcaption" value="Pensioner ID"/>
+</field>
+<field id="status"><phrase id="fldcaption" value="status"/>
+</field>
+<field id="remarks"><phrase id="fldcaption" value="Remarks"/>
+</field>
+<field id="approved"><phrase id="fldcaption" value="approved"/>
+</field>
+<field id="dateupdated"><phrase id="fldcaption" value="date Updated"/>
+</field>
+<field id="_field"><phrase id="fldcaption" value="field"/>
+</field>
+<field id="new_value"><phrase id="fldcaption" value="new value"/>
+</field>
+<field id="old_value"><phrase id="fldcaption" value="old value"/>
+</field>
+<field id="paymentmodeid"><phrase id="fldcaption" value="paymentmode ID"/>
+</field>
+<field id="deathdate"><phrase id="fldcaption" value="death Date"/>
+</field>
+<field id="createdby"><phrase id="fldcaption" value="Createdby"/>
+</field>
+<field id="createddate"><phrase id="fldcaption" value="Created Date"/>
+</field>
+<field id="updatedby"><phrase id="fldcaption" value="Updated By"/>
+</field>
+<field id="updateddate"><phrase id="fldcaption" value="Updated Date"/>
+</field>
+</table>
+<table id="tbl_user"><phrase id="tblcaption" value="Account User"/>
+<field id="uid"><phrase id="fldcaption" value="uid"/>
+</field>
+<field id="username"><phrase id="fldcaption" value="Username"/>
+</field>
+<field id="password"><phrase id="fldcaption" value="Password"/>
+</field>
+<field id="_email"><phrase id="fldcaption" value="Email"/>
+</field>
+<field id="firstname"><phrase id="fldcaption" value="Firstname"/>
+</field>
+<field id="middlename"><phrase id="fldcaption" value="Middlename"/>
+</field>
+<field id="surname"><phrase id="fldcaption" value="Surname"/>
+</field>
+<field id="extensionname"><phrase id="fldcaption" value="Extension name"/>
+</field>
+<field id="position"><phrase id="fldcaption" value="Position"/>
+</field>
+<field id="designation"><phrase id="fldcaption" value="Designation"/>
+</field>
+<field id="region_code"><phrase id="fldcaption" value="Field Office"/>
+</field>
+<field id="user_level"><phrase id="fldcaption" value="User Level"/>
+</field>
+<field id="contact_no"><phrase id="fldcaption" value="Contact no"/>
+</field>
+<field id="activated"><phrase id="fldcaption" value="Activated"/>
+<phrase id="fldtagvalue1" value="0"/>
+<phrase id="fldtagcaption1" value="0 - No"/>
+<phrase id="fldtagvalue2" value="1"/>
+<phrase id="fldtagcaption2" value="1 - Yes"/>
+</field>
+<field id="profile"><phrase id="fldcaption" value="Profile"/>
+</field>
+</table>
+<table id="userlevelpermissions"><phrase id="tblcaption" value="Permissions"/>
+<field id="userlevelid"><phrase id="fldcaption" value="userlevelid"/>
+</field>
+<field id="_tablename"><phrase id="fldcaption" value="Table Name"/>
+</field>
+<field id="permission"><phrase id="fldcaption" value="Permission"/>
+</field>
+</table>
+<table id="userlevels"><phrase id="tblcaption" value="User Levels"/>
+<field id="userlevelid"><phrase id="fldcaption" value="User Level ID"/>
+</field>
+<field id="userlevelname"><phrase id="fldcaption" value="User Level Name"/>
+</field>
+</table>
+<table id="pensioner_updates"><phrase id="tblcaption" value="Pensioner Updates"/>
+<field id="updatesid"><phrase id="fldcaption" value="updates ID"/>
+</field>
+<field id="pensionerid"><phrase id="fldcaption" value="Pensioner ID"/>
+</field>
+<field id="status"><phrase id="fldcaption" value="status"/>
+</field>
+<field id="dateupdated"><phrase id="fldcaption" value="date Updated"/>
+</field>
+<field id="approved"><phrase id="fldcaption" value="approved"/>
+</field>
+<field id="deathdate"><phrase id="fldcaption" value="death Date"/>
+</field>
+<field id="paymentmodeid"><phrase id="fldcaption" value="paymentmode ID"/>
+</field>
+<field id="createdby"><phrase id="fldcaption" value="Createdby"/>
+</field>
+<field id="createddate"><phrase id="fldcaption" value="Created Date"/>
+</field>
+<field id="updatedby"><phrase id="fldcaption" value="Updated By"/>
+</field>
+<field id="updateddate"><phrase id="fldcaption" value="Updated Date"/>
+</field>
+<field id="remarks"><phrase id="fldcaption" value="Remarks"/>
+</field>
+<field id="_field"><phrase id="fldcaption" value="field"/>
+</field>
+<field id="new_value"><phrase id="fldcaption" value="new value"/>
+</field>
+<field id="old_value"><phrase id="fldcaption" value="old value"/>
+</field>
+</table>
+</project>
+</ew-language>

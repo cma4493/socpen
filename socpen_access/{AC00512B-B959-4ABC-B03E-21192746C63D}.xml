@@ -1,0 +1,35 @@
+﻿<?xml version="1.0"?>
+<configuration date="2015/12/15" author="e.World Technology Ltd.">
+<project id="{AC00512B-B959-4ABC-B03E-21192746C63D}" file="D:\backups\jfsbaldo\Desktop\josef\socpen_access.pmp" name="socpen_access" product="PHPMaker" version="10.0" datetime="2015/12/15 14:57:56" languagefolder="phplang" userlevel="0,&quot;Default&quot;,0">
+<table id="audittrail" name="audittrail" caption="Audittrail" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="lib_affliation" name="lib_affliation" caption="Affliations" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="lib_arrangement" name="lib_arrangement" caption="Arrangement" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="lib_assistive" name="lib_assistive" caption="Assistive" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="lib_brgy" name="lib_brgy" caption="Barangay" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="lib_cities" name="lib_cities" caption="City" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="lib_civilstatus" name="lib_civilstatus" caption="Civil Status" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="lib_delistreason" name="lib_delistreason" caption="Desliting Reasons" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="lib_disability" name="lib_disability" caption="Disability" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="lib_famsupport" name="lib_famsupport" caption="Family Support" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="lib_illness" name="lib_illness" caption="Illness" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="lib_month" name="lib_month" caption="Months" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="lib_paymentmode" name="lib_paymentmode" caption="Payment Mode" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="lib_physical_condition" name="lib_physical_condition" caption="Physical Condition" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="lib_provinces" name="lib_provinces" caption="Provinces" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="lib_regions" name="lib_regions" caption="Regions" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="lib_relationship" name="lib_relationship" caption="Relationships" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="lib_rule" name="lib_rule" caption="Rules" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="lib_status" name="lib_status" caption="Statuses" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="lib_support" name="lib_support" caption="Support" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="lib_utilizationdetail" name="lib_utilizationdetail" caption="Utilization Detail" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="lib_year" name="lib_year" caption="Years" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="tbl_pension_payroll" name="tbl_pension_payroll" caption="Pensioner Payroll" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="tbl_pensioner" name="tbl_pensioner" caption="Pensioners" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="tbl_representative" name="tbl_representative" caption="Representatives" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="tbl_support" name="tbl_support" caption="Support" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="tbl_updates" name="tbl_updates" caption="Updates" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="tbl_user" name="tbl_user" caption="Account User" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="userlevelpermissions" name="userlevelpermissions" caption="Permissions" userlevel="" priv="1"/>
+<table id="userlevels" name="userlevels" caption="User Levels" userlevel="" priv="1"/>
+<table id="Pensioner_Updates" name="Pensioner Updates" caption="Pensioner Updates" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+</project></configuration>

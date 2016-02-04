@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - db_pension_access_mkr@localhost" uuid="c98816c7-7892-4bf8-a99c-fec3619249e6">
+    <database-info product="MySQL" version="5.6.24" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="db_pension_access_mkr"/>
+    <table name="audittrail" schema="" catalog="db_pension_access_mkr" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="datetime" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="script" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="user" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="action" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="table" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="field" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="keyvalue" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="oldvalue" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="newvalue" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="true" jdbcType="-1"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="ci_sessions" schema="" catalog="db_pension_access_mkr" type="TABLE">
+      <column name="session_id" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12" def="JzAn"/>
+      <column name="ip_address" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12" def="JzAn"/>
+      <column name="user_agent" sqlType="VARCHAR" precision="120" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_activity" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="user_data" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <primary-key name="PRIMARY" columns="session_id"/>
+      <index name="last_activity_idx" unique="false" columns="last_activity"/>
+    </table>
+    <table name="lib_affliation" schema="" catalog="db_pension_access_mkr" type="TABLE">
+      <column name="affliationID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="aff_description" sqlType="VARCHAR" precision="120" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="affliationID"/>
+    </table>
+    <table name="lib_arrangement" schema="" catalog="db_pension_access_mkr" type="TABLE">
+      <column name="ArrangementID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="Description" sqlType="VARCHAR" precision="25" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="ArrangementID"/>
+    </table>
+    <table name="lib_assistive" schema="" catalog="db_pension_access_mkr" type="TABLE">
+      <column name="assistiveID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="Device" sqlType="VARCHAR" precision="25" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="assistiveID"/>
+    </table>
+    <table name="lib_brgy" schema="" catalog="db_pension_access_mkr" type="TABLE">
+      <column name="brgy_name" sqlType="VARCHAR" precision="80" scale="0" nullable="false" jdbcType="12" remarks="QnNyYW5nYXkgTmFtZQ=="/>
+      <column name="city_code" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" remarks="TXVuaWNpcGFsaXR5"/>
+      <column name="brgy_code" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" remarks="QmFyYW5nYXkgQ29kZQ=="/>
+      <column name="district_no" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="brgy_code"/>
+      <exported-key name="tbl_pensioner_ibfk_4" table="tbl_pensioner" schema="" catalog="db_pension_access_mkr" columns="psgc_brgy"/>
+      <exported-key name="tbl_representative_ibfk_6" table="tbl_representative" schema="" catalog="db_pension_access_mkr" columns="auth_brgy"/>
+      <index name="brgy_name" unique="false" columns="brgy_name"/>
+      <index name="city_code" unique="false" columns="city_code"/>
+    </table>
+    <table name="lib_cities" schema="" catalog="db_pension_access_mkr" type="TABLE">
+      <column name="city_code" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="city_name" sqlType="VARCHAR" precision="80" scale="0" nullable="false" jdbcType="12"/>
+      <column name="prov_code" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="district_no" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="district_name" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="is_Urban" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MA=="/>
+      <column name="locked" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MA=="/>
+      <primary-key name="PRIMARY" columns="city_code"/>
+      <exported-key name="tbl_pensioner_ibfk_3" table="tbl_pensioner" schema="" catalog="db_pension_access_mkr" columns="psgc_municipality"/>
+      <exported-key name="tbl_representative_ibfk_5" table="tbl_representative" schema="" catalog="db_pension_access_mkr" columns="auth_city"/>
+      <index name="city_name" unique="false" columns="city_name"/>
+      <index name="prov_code" unique="false" columns="prov_code"/>
+    </table>
+    <table name="lib_civilstatus" schema="" catalog="db_pension_access_mkr" type="TABLE">
+      <column name="MaritalID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="Description" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="MaritalID"/>
+    </table>
+    <table name="lib_claimed" schema="" catalog="db_pension_access_mkr" type="TABLE">
+      <column name="claim_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="claim_name" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="claim_value" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="created_by" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="date_created" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="modified_by" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="date_modified" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="DELETED" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <primary-key name="PRIMARY" columns="claim_id"/>
+    </table>
+    <table name="lib_custom_report_indicators" schema="" catalog="db_pension_access_mkr" type="TABLE">
+      <column name="custom_report_increment_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="custom_report_increment_id"/>
+    </table>
+    <table name="lib_delistreason" schema="" catalog="db_pension_access_mkr" type="TABLE">
+      <column name="delReasonID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="Reason" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="delReasonID"/>
+    </table>
+    <table name="lib_disability" schema="" catalog="db_pension_access_mkr" type="TABLE">
+      <column name="disabilityID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="Description" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="disabilityID"/>
+    </table>
+    <table name="lib_famsupport" schema="" catalog="db_pension_access_mkr" type="TABLE">
+      <column name="KindSupID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="SupportKind" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="KindSupID"/>
+    </table>
+    <table name="lib_illness" schema="" catalog="db_pension_access_mkr" type="TABLE">
+      <column name="illnessID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="description" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="illnessID"/>
+    </table>
+    <table name="lib_month" schema="" catalog="db_pension_access_mkr" type="TABLE">
+      <column name="MonthID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="desc" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
+      <column name="QtrID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="MonthID"/>
+    </table>
+    <table name="lib_paymentmode" schema="" catalog="db_pension_access_mkr" type="TABLE">
+      <column name="paymentmodeID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="description" sqlType="VARCHAR" precision="80" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Signatory" sqlType="VARCHAR" precision="120" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="paymentmodeID"/>
+      <exported-key name="tbl_pensioner_ibfk_6" table="tbl_pensioner" schema="" catalog="db_pension_access_mkr" columns="paymentmodeID"/>
+    </table>
+    <table name="lib_physical_condition" schema="" catalog="db_pension_access_mkr" type="TABLE">
+      <column name="physconditionID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="physconditionName" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="created_by" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="date_created" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="modified_by" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="date_modified" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="DELETED" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <primary-key name="PRIMARY" columns="physconditionID"/>
+    </table>
+    <table name="lib_provinces" schema="" catalog="db_pension_access_mkr" type="TABLE">
+      <column name="prov_code" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="prov_name" sqlType="VARCHAR" precision="80" scale="0" nullable="false" jdbcType="12"/>
+      <column name="region_code" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="prov_code"/>
+      <exported-key name="tbl_pensioner_ibfk_2" table="tbl_pensioner" schema="" catalog="db_pension_access_mkr" columns="psgc_province"/>
+      <exported-key name="tbl_representative_ibfk_4" table="tbl_representative" schema="" catalog="db_pension_access_mkr" columns="auth_prov"/>
+      <index name="prov_name" unique="false" columns="prov_name"/>
+      <index name="region_code" unique="false" columns="region_code"/>
+    </table>
+    <table name="lib_regions" schema="" catalog="db_pension_access_mkr" type="TABLE">
+      <column name="region_code" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="region_name" sqlType="VARCHAR" precision="60" scale="0" nullable="false" jdbcType="12"/>
+      <column name="region_nick" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <column name="region_director" sqlType="VARCHAR" precision="80" scale="0" nullable="true" jdbcType="12"/>
+      <column name="philpost_director" sqlType="VARCHAR" precision="120" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="region_code"/>
+      <exported-key name="tbl_pensioner_ibfk_1" table="tbl_pensioner" schema="" catalog="db_pension_access_mkr" columns="psgc_region"/>
+      <exported-key name="tbl_representative_ibfk_3" table="tbl_representative" schema="" catalog="db_pension_access_mkr" columns="auth_Region"/>
+      <exported-key name="tbl_user_ibfk_1" table="tbl_user" schema="" catalog="db_pension_access_mkr" columns="region_code"/>
+      <index name="region_code" unique="false" columns="region_code"/>
+      <index name="region_name" unique="false" columns="region_name"/>
+    </table>
+    <table name="lib_relationship" schema="" catalog="db_pension_access_mkr" type="TABLE">
+      <column name="RelationID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="Description" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="RelationID"/>
+      <exported-key name="tbl_representative_ibfk_2" table="tbl_representative" schema="" catalog="db_pension_access_mkr" columns="relToPensioner"/>
+    </table>
+    <table name="lib_rule" schema="" catalog="db_pension_access_mkr" type="TABLE">
+      <column name="ruleID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="rule_age" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="rule_affiliation" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="rule_active" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="created_by" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="date_created" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="modified_by" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="date_modified" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="DELETED" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <primary-key name="PRIMARY" columns="ruleID"/>
+      <index name="rule_active" unique="true" columns="rule_active"/>
+    </table>
+    <table name="lib_status" schema="" catalog="db_pension_access_mkr" type="TABLE">
+      <column name="statusID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="status" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="statusID"/>
+      <exported-key name="tbl_pensioner_ibfk_5" table="tbl_pensioner" schema="" catalog="db_pension_access_mkr" columns="Status"/>
+    </table>
+    <table name="lib_support" schema="" catalog="db_pension_access_mkr" type="TABLE">
+      <column name="SupportID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="SupportKind" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="SupportID"/>
+    </table>
+    <table name="lib_utilizationdetail" schema="" catalog="db_pension_access_mkr" type="TABLE">
+      <column name="UtilizationDetailID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="description" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="UtilizationDetailID"/>
+    </table>
+    <table name="lib_year" schema="" catalog="db_pension_access_mkr" type="TABLE">
+      <column name="Year" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="Year"/>
+    </table>
+    <table name="tbl_pension_payroll" schema="" catalog="db_pension_access_mkr" type="TABLE">
+      <column name="PayrollID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="PayrollYear" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="cMonth" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="amount" sqlType="DOUBLE" precision="11" scale="0" nullable="true" jdbcType="8"/>
+      <column name="Approved" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="Claimed" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="PensionerID" sqlType="VARCHAR" precision="25" scale="0" nullable="true" jdbcType="12"/>
+      <column name="paymentmodeID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="Createdby" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="CreatedDate" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="UpdatedBy" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="UpdatedDate" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="PayrollID"/>
+      <foreign-key name="tbl_pension_payroll_ibfk_1" columns="PensionerID" ref-table="tbl_pensioner" ref-schema="" ref-catalog="db_pension_access_mkr" ref-columns="PensionerID" update-rule="0" delete-rule="0" deferrability="2"/>
+      <index name="UniquePensioner" unique="true" columns="PayrollYear,PensionerID,cMonth"/>
+      <index name="PensionerID4" unique="false" columns="PensionerID,Claimed"/>
+    </table>
+    <table name="tbl_pensioner" schema="" catalog="db_pension_access_mkr" type="TABLE">
+      <column name="SeniorID" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="PensionerID" sqlType="VARCHAR" precision="25" scale="0" nullable="true" jdbcType="12" remarks="U3lzdGVtIEdlbmVyYXRlZCBQZW5zaW9uZXIgSUQgLSBQcmltYXJ5IElkZW50aWZ5ZXIgZm9yIGFsbCB0YWJsZXM="/>
+      <column name="InclusionDate" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="hh_id" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12" remarks="TkhUUyBIb3VzZWhvbGQgSWRlbnRpZmljYXRpb24gTm8uIC0gQ2hlY2twb2ludCBmb3IgUGF5cm9sbA=="/>
+      <column name="osca_ID" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12" remarks="T2ZmaWNlIG9mIFNlbmlvciBDaXRpemVucyBBZmZhaXIgSWRlbnRpZmljYXRpb24gTm8u"/>
+      <column name="PlaceIssued" sqlType="VARCHAR" precision="120" scale="0" nullable="true" jdbcType="12" remarks="T1NDQSBJRCBQbGFjZSBvZiBJc3N1YW5jZQ=="/>
+      <column name="DateIssued" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93" remarks="T1NDQSBJRCBEYXRlIG9mIElzc3VhbmNl"/>
+      <column name="firstname" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12" remarks="Rmlyc3RuYW1lIG9mIEJlbmVmaWNpYXJ5"/>
+      <column name="middlename" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12" remarks="TWlkZGxlIE5hbWUgb2YgQmVuZWZpY2lhcnk="/>
+      <column name="lastname" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12" remarks="TGFzdG5hbWUgb2YgQmVuZWZpY2lhcnk="/>
+      <column name="extname" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Birthdate" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91" remarks="QmlydGhkYXRlIG9mIEJlbmVmaWNpYXJ5"/>
+      <column name="sex" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" remarks="U2V4IG9mIEJlbmVmaWNpYXJ5IC0gMCBNYWxlIDEgRmVtYWxl"/>
+      <column name="MaritalID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="affliationID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA==" remarks="QWZmaWxpYXRpb24gb2YgQmVuZWZpY2lhcnk="/>
+      <column name="psgc_region" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" remarks="UGhpbGlsaXBwaW5lIFN0YW5kYXJkIEdlb2dyYXBoaWMgQ29kZSBmb3IgUmVnaW9u"/>
+      <column name="psgc_province" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" remarks="UGhpbGlsaXBwaW5lIFN0YW5kYXJkIEdlb2dyYXBoaWMgQ29kZSBmb3IgUHJvdmluY2U="/>
+      <column name="psgc_municipality" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" remarks="UGhpbGlsaXBwaW5lIFN0YW5kYXJkIEdlb2dyYXBoaWMgQ29kZSBmb3IgQ2l0eS9NdW5pY2lwYWxpdHk="/>
+      <column name="psgc_brgy" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" remarks="UGhpbGlsaXBwaW5lIFN0YW5kYXJkIEdlb2dyYXBoaWMgQ29kZSBmb3IgQmFyYW5nYXk="/>
+      <column name="given_add" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="SG91c2UgTnVtYmVy"/>
+      <column name="Status" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MQ==" remarks="UGVuZGluZywgQWN0aXZlIG9yIEluYWN0aXZlIEJlbmVmaWNpYXJ5OiA="/>
+      <column name="paymentmodeID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="approved" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MA==" remarks="U1BNTyBhcHByb3ZlZDsgMSBmb3IgYXBwcm92ZWQ7IG90aGVyd2lzZSAw"/>
+      <column name="approvedby" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="VXNlcklEIG9mIEFwcHJvdmVy"/>
+      <column name="DateApproved" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93" remarks="RGF0ZSBvZiBBcHByb3ZhbA=="/>
+      <column name="ArrangementID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="TGl2aW5nIEFycmFuZ2VtZW50IG9mIEJlbmVmaWNpYXJ5"/>
+      <column name="Createdby" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="CreatedDate" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="UpdatedBy" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="UpdatedDate" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="UpdateRemarks" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="codeGen" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="is_4ps" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA==" remarks="MCAtIE5vOyAxIC0gWWVz"/>
+      <column name="abandoned" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="picture" sqlType="LONGBLOB" precision="2147483647" scale="0" nullable="true" jdbcType="-4"/>
+      <column name="picturename" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="picturetype" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="picturewidth" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="pictureheight" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="picturesize" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="hyperlink" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="payroll_flag_stat" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="DELETED" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <primary-key name="PRIMARY" columns="SeniorID"/>
+      <foreign-key name="tbl_pensioner_ibfk_1" columns="psgc_region" ref-table="lib_regions" ref-schema="" ref-catalog="db_pension_access_mkr" ref-columns="region_code" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="tbl_pensioner_ibfk_2" columns="psgc_province" ref-table="lib_provinces" ref-schema="" ref-catalog="db_pension_access_mkr" ref-columns="prov_code" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="tbl_pensioner_ibfk_3" columns="psgc_municipality" ref-table="lib_cities" ref-schema="" ref-catalog="db_pension_access_mkr" ref-columns="city_code" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="tbl_pensioner_ibfk_4" columns="psgc_brgy" ref-table="lib_brgy" ref-schema="" ref-catalog="db_pension_access_mkr" ref-columns="brgy_code" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="tbl_pensioner_ibfk_5" columns="Status" ref-table="lib_status" ref-schema="" ref-catalog="db_pension_access_mkr" ref-columns="statusID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="tbl_pensioner_ibfk_6" columns="paymentmodeID" ref-table="lib_paymentmode" ref-schema="" ref-catalog="db_pension_access_mkr" ref-columns="paymentmodeID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="tbl_pension_payroll_ibfk_1" table="tbl_pension_payroll" schema="" catalog="db_pension_access_mkr" columns="PensionerID"/>
+      <exported-key name="tbl_representative_ibfk_7" table="tbl_representative" schema="" catalog="db_pension_access_mkr" columns="PensionerID"/>
+      <exported-key name="tbl_support_ibfk_1" table="tbl_support" schema="" catalog="db_pension_access_mkr" columns="PensionerID"/>
+      <exported-key name="tbl_updates_ibfk_1" table="tbl_updates" schema="" catalog="db_pension_access_mkr" columns="PensionerID"/>
+      <index name="firstname" unique="true" columns="firstname,middlename,lastname,extname,Birthdate,sex"/>
+      <index name="PensionerID" unique="true" columns="PensionerID"/>
+      <index name="psgc_city" unique="false" columns="psgc_municipality"/>
+      <index name="psgc_prov" unique="false" columns="psgc_province"/>
+    </table>
+    <table name="tbl_print_ar" schema="" catalog="db_pension_access_mkr" type="TABLE">
+      <column name="printgen_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="date_generated" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="file_name" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="directory" sqlType="VARCHAR" precision="150" scale="0" nullable="false" jdbcType="12"/>
+      <column name="created_by" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="date_created" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="modified_by" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="date_modified" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="DELETED" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <primary-key name="PRIMARY" columns="printgen_id"/>
+    </table>
+    <table name="tbl_print_payroll" schema="" catalog="db_pension_access_mkr" type="TABLE">
+      <column name="printgen_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="date_generated" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="file_name" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="directory" sqlType="VARCHAR" precision="150" scale="0" nullable="false" jdbcType="12"/>
+      <column name="created_by" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="date_created" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="modified_by" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="date_modified" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="DELETED" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <primary-key name="PRIMARY" columns="printgen_id"/>
+    </table>
+    <table name="tbl_reports_list" schema="" catalog="db_pension_access_mkr" type="TABLE">
+      <column name="report_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="chart_type" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="chart_vax" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="chart_width" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="chart_height" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="transpose_result" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="mycaption" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="query" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="group" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="stack" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <primary-key name="PRIMARY" columns="report_id"/>
+    </table>
+    <table name="tbl_representative" schema="" catalog="db_pension_access_mkr" type="TABLE">
+      <column name="authID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="fname" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
+      <column name="mname" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
+      <column name="lname" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
+      <column name="relToPensioner" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="ContactNo" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <column name="auth_Region" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="auth_prov" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="auth_city" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="auth_brgy" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="houseNo" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PensionerID" sqlType="VARCHAR" precision="25" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CreatedBy" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="CreatedDate" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="UpdatedBy" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="UpdatedDate" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="authID"/>
+      <foreign-key name="tbl_representative_ibfk_2" columns="relToPensioner" ref-table="lib_relationship" ref-schema="" ref-catalog="db_pension_access_mkr" ref-columns="RelationID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="tbl_representative_ibfk_3" columns="auth_Region" ref-table="lib_regions" ref-schema="" ref-catalog="db_pension_access_mkr" ref-columns="region_code" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="tbl_representative_ibfk_4" columns="auth_prov" ref-table="lib_provinces" ref-schema="" ref-catalog="db_pension_access_mkr" ref-columns="prov_code" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="tbl_representative_ibfk_5" columns="auth_city" ref-table="lib_cities" ref-schema="" ref-catalog="db_pension_access_mkr" ref-columns="city_code" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="tbl_representative_ibfk_6" columns="auth_brgy" ref-table="lib_brgy" ref-schema="" ref-catalog="db_pension_access_mkr" ref-columns="brgy_code" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="tbl_representative_ibfk_7" columns="PensionerID" ref-table="tbl_pensioner" ref-schema="" ref-catalog="db_pension_access_mkr" ref-columns="PensionerID" update-rule="0" delete-rule="0" deferrability="2"/>
+    </table>
+    <table name="tbl_support" schema="" catalog="db_pension_access_mkr" type="TABLE">
+      <column name="supportID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="family_support" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="MCAtIE5vOyAxIC0gWWVz"/>
+      <column name="KindSupID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="meals" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="disability" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="disabilityID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="immobile" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="assistiveID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="preEx_illness" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="illnessID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="PensionerID" sqlType="VARCHAR" precision="25" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CreatedBy" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="CreatedDate" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="UpdatedBy" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="UpdatedDate" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="physconditionID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="supportID"/>
+      <foreign-key name="tbl_support_ibfk_1" columns="PensionerID" ref-table="tbl_pensioner" ref-schema="" ref-catalog="db_pension_access_mkr" ref-columns="PensionerID" update-rule="0" delete-rule="0" deferrability="2"/>
+      <index name="assistiveID" unique="false" columns="assistiveID"/>
+      <index name="disabilityID" unique="false" columns="disabilityID"/>
+      <index name="family_support" unique="false" columns="family_support"/>
+      <index name="illnessID" unique="false" columns="illnessID"/>
+      <index name="KindSupID" unique="false" columns="KindSupID"/>
+      <index name="physconditionID" unique="false" columns="physconditionID"/>
+    </table>
+    <table name="tbl_updates" schema="" catalog="db_pension_access_mkr" type="TABLE">
+      <column name="updatesID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="PensionerID" sqlType="VARCHAR" precision="25" scale="0" nullable="true" jdbcType="12"/>
+      <column name="status" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="Remarks" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="approved" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="dateUpdated" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="field" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="new_value" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="old_value" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="paymentmodeID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="deathDate" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="Createdby" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="CreatedDate" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="UpdatedBy" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="UpdatedDate" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="updatesID"/>
+      <foreign-key name="tbl_updates_ibfk_1" columns="PensionerID" ref-table="tbl_pensioner" ref-schema="" ref-catalog="db_pension_access_mkr" ref-columns="PensionerID" update-rule="0" delete-rule="0" deferrability="2"/>
+      <index name="PensionerID8" unique="false" columns="PensionerID"/>
+    </table>
+    <table name="tbl_user" schema="" catalog="db_pension_access_mkr" type="TABLE">
+      <column name="uid" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="username" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="80" scale="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="firstname" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12" remarks="Rmlyc3RuYW1l"/>
+      <column name="middlename" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12" remarks="TWlkZGxlIE5hbWU="/>
+      <column name="surname" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12" remarks="U3VybmFtZQ=="/>
+      <column name="extensionname" sqlType="VARCHAR" precision="3" scale="0" nullable="true" jdbcType="12" remarks="RXh0ZW5zaW9u"/>
+      <column name="position" sqlType="VARCHAR" precision="80" scale="0" nullable="true" jdbcType="12"/>
+      <column name="designation" sqlType="VARCHAR" precision="80" scale="0" nullable="true" jdbcType="12"/>
+      <column name="region_code" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="user_level" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="contact_no" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="activated" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="profile" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <primary-key name="PRIMARY" columns="uid"/>
+      <foreign-key name="tbl_user_ibfk_1" columns="region_code" ref-table="lib_regions" ref-schema="" ref-catalog="db_pension_access_mkr" ref-columns="region_code" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="email" unique="true" columns="email"/>
+      <index name="username" unique="true" columns="username,password"/>
+      <index name="designation" unique="false" columns="designation"/>
+      <index name="position" unique="false" columns="position"/>
+      <index name="user_fullname" unique="false" columns="firstname"/>
+      <index name="user_level" unique="false" columns="user_level"/>
+    </table>
+    <table name="userlevelpermissions" schema="" catalog="db_pension_access_mkr" type="TABLE">
+      <column name="userlevelid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="tablename" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="permission" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="userlevelid,tablename"/>
+    </table>
+    <table name="userlevels" schema="" catalog="db_pension_access_mkr" type="TABLE">
+      <column name="userlevelid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="userlevelname" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="userlevelid"/>
+    </table>
+  </data-source>
+</component>

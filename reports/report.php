@@ -1,0 +1,605 @@
+<?php
+session_start();
+include ("show_array.php");
+include ("../ewcfg10.php");
+?>
+<?php
+$dbc = @mysql_connect (EW_CONN_HOST, EW_CONN_USER, EW_CONN_PASS) OR die ('Could not connect to MySQL: ' . mysql_error());
+@mysql_select_db (EW_CONN_DB) OR die('Could not select the database: ' . mysql_error() );
+
+
+$SelReport = "SELECT * FROM tbl_reports_list where report_id = '".$_GET['rpt_id']."'";
+$ResReport = mysql_query($SelReport) or die(" Error OR module: ".mysql_error());
+$rowResReport = mysql_fetch_array($ResReport);
+
+$ctype = $rowResReport['chart_type'];
+$cvax = $rowResReport['chart_vax'];
+$ctranspose = $rowResReport['transpose_result'];
+$report_name = $rowResReport['mycaption'];
+$query = $rowResReport['query'];
+	
+$datahost = EW_CONN_HOST;
+$dataport = EW_CONN_PORT;
+$datauname = EW_CONN_USER;
+$datapword = EW_CONN_PASS;
+$datadbname = EW_CONN_DB;
+?>
+<?php
+//===db settings==============================
+$hostname = "$datahost:$dataport";
+$username = "$datauname";
+$password = "$datapword";
+$database = "$datadbname";
+//============================================
+
+//====query and caption======================================================================================
+
+$mycaption="$report_name";
+//where 
+//order by region_id
+
+$query = "$query";
+//===========================================================================================================
+?>
+<?php
+//set defaults
+$vax=$cvax; //vertial text for y axis
+$hax=""; //horizontal text to x axis , currently disabled to allow showing of x labels
+//$ctype=1; // 1 to 5 //chart types
+$cwidth="550"; //chart width
+$cheight="300"; //chart height 
+$cstacked="false"; //value true or false =enables stacked option for bar graphs
+$datasrc="";
+$transpose_result=0; //0 = false , 1= true transposing of result data
+$vtype=1; //default chart type
+$switched = true; // set to True = highcharts and False = Google Charts
+//========================================================================================
+
+
+//========================================================================================
+
+
+//get url settings
+
+//if($_GET["datasrc"]!="" && file_exists("reports/" . $_GET["datasrc"] . ".php")){
+	//$datasrc="reports/" . $_GET["datasrc"] . ".php";
+//}
+
+	if($query!=""){ 
+		//include ("reports/" . $_GET["datasrc"] . ".php");
+
+	if($_GET["cwidth"]>1){ //cwidth = "any integer that fits your screen in px"
+		$cwidth=$_GET["cwidth"];
+	}
+	if($_GET["cheight"]>1){ //cheight = "any integer that fits your screen in px"
+		$cheight=$_GET["cheight"];
+	}
+	// if($_GET["vax"]!=""){ //vax = "any string"
+		// $vax=$_GET["vax"];
+	// }
+	// if($_GET["hax"]!=""){ //hax = "any string"
+		// $hax=$_GET["hax"];
+	// }
+	// if($_GET["ctype"]>=1 && $_GET["ctype"]<=5){ //ctype= 1 to 5
+		// $ctype=$_GET["ctype"];
+	// }
+	if($_GET["stack"]!="" && $_GET["stack"]=="1"){  // stack =0 or 1
+		$cstacked="true";
+	}
+	if($_GET["stack"]!="" && $_GET["stack"]=="0"){
+		$cstacked="false";
+	}
+	if($vtype!="" && $vtype<"3"){
+		$vtype=$vtype;
+		$nvtype=$vtype;
+	}
+	
+	if($_GET["switched"]!=""){
+		if($_GET["switched"]=="1"){
+			$switched = true;
+		}else{
+			$switched = false;
+		}	
+	}else{
+		$switched = $switched;	
+	}	
+	
+	//---------------------------
+	// vtype switcher
+	if($switched == true){
+		if($nvtype=="1" || $vtype==""){
+			$vtype="2";
+			
+		}	
+		if($nvtype=="2"){
+			$vtype="1";
+		}
+	}
+	//---------------------------
+	if($_GET["trans"]!=""){   //trans= 0 or 1
+		$transpose_result=$_GET["trans"];
+		
+		if($vtype == "2"){
+			if($ctype == "2" || $ctype == "1" || $ctype == "5"){
+				if($transpose_result == "1") { // reverse trans argument to follow google notation
+					$transpose_result = "0";
+				} else {
+					$transpose_result = "1";
+				}
+			}else{
+				
+				$transpose_result=$_GET["trans"];
+			}	
+		}
+		if($vtype == "1"){
+			$transpose_result=$_GET["trans"];
+		}	
+	} 
+	
+	if($switched == true){ //use only if default vtype is forcefully inverted
+		if($vtype == "2"){
+			if($ctype == "2" || $ctype == "1" || $ctype == "5"){
+				if($transpose_result == "1") { // reverse trans argument to follow google notation
+					$transpose_result = "0";
+				} else {
+					$transpose_result = "1";
+				}
+			}else{
+				
+				$transpose_result=$_GET["trans"];
+			}	
+		}
+		if($vtype == "1"){
+			$transpose_result=$_GET["trans"];
+		}	
+	}
+		
+		
+	
+	if($vtype == "1"){
+		//google chart types;
+		$g[1]="AreaChart";
+		$g[2]="LineChart";
+		$g[3]="BarChart";
+		$g[4]="ColumnChart";
+		$g[5]="PieChart";
+	}
+	if($vtype == "2"){
+		//highcharts chart types;
+		$g[1]="area";
+		$g[2]="line";
+		$g[3]="bar";
+		$g[4]="column";
+		$g[5]="pie";
+	}
+	
+
+?>
+<?php if($vtype == "2"){ ?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="refresh" content="360">
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="../iframe.css" />
+		<script type="text/javascript">
+		jQuery.noConflict();
+	</script>
+		<script type="text/javascript">
+		var example = 'column-parsed',
+		theme = 'default';
+	</script>
+		<script src="js/highcharts.js"></script>
+		<script src="js/modules/exporting.js"></script>
+		<script type="text/javascript">
+		Highcharts.theme = { colors: ['#4572A7'] };// prevent errors in default theme
+		var highchartsOptions = Highcharts.getOptions(); 
+	</script>
+		<script type="text/javascript">
+
+	(function($){ // encapsulate jQuery
+		$(document).ready(function() {
+		
+		Highcharts.visualize = function(table, options) {
+		// the categories
+		options.xAxis.categories = [];
+		$('tbody th', table).each( function(i) {
+			options.xAxis.categories.push(this.innerHTML);
+		});
+
+		// the data series
+		options.series = [];
+		$('tr', table).each( function(i) {
+			var tr = this;
+			$('th, td', tr).each( function(j) {
+				if (j > 0) { // skip first column
+					if (i == 0) { // get the name and init the series
+						options.series[j - 1] = {
+							name: this.innerHTML,
+							data: []
+						};
+					<?php  if($ctype=="5"){?>	 
+						$('tbody tr', table).each( function(i) {
+								var tr = this;
+								var th = $('th', tr).text();
+								var td = parseFloat($('td', tr).text());
+								options.series[0].data.push({name:th,y:td});
+						});
+					<?php } ?>	
+					} else { // add values
+						<?php  if($ctype != "5"){?>
+							options.series[j - 1].data.push(parseFloat(this.innerHTML));
+						<?php } ?>
+					}
+				}
+			});
+		});
+
+		var chart = new Highcharts.Chart(options);
+	}
+
+	var table = document.getElementById('#dataset'),
+	options = {
+		chart: {
+			renderTo: 'container',
+			type: '<?php echo $g[$ctype] ;  ?>'
+		},
+		title: {
+			text: '<?php echo wordwrap($mycaption,110,"<br>"); ?>',
+			style: {
+					font: 'bold 9px Verdana, sans-serif'
+				}
+		},
+		xAxis: {
+			title: {
+				text: '<?php echo $hax; ?>'
+			},
+			labels: {
+				rotation: -15,
+				align: 'right',
+				style: {
+					font: 'normal 9px Verdana, sans-serif'
+				}
+			}
+		},
+		yAxis: {
+			title: {
+				text: '<?php echo $vax; ?>'
+			}
+		},
+		 tooltip: {
+                formatter: function() {
+                    return ''+
+                       <?php if($ctype=="1" || $ctype=="2" || $ctype=="3"){ ?>
+						'<b>' + this.x + '</b><br>' + this.series.name +': '+ Highcharts.numberFormat(this.y, 0, ',') +'';
+					   <?php }else{ ?>
+							<?php if($cstacked =="true" || $ctype=="5"){ ?>
+								<?php if($ctype=="5"){ ?>
+									this.point.name +': '+ Highcharts.numberFormat(this.y, 0, ',') +' ('+ this.percentage.toFixed(2) +'%)';
+								<?php }else{ ?>
+									'<b>' + this.x + '</b><br>' + this.series.name +': '+ Highcharts.numberFormat(this.y, 0, ',') +' ('+ this.percentage.toFixed(2) +'%)';
+								<?php } ?>
+							<?php }else{ ?>
+								'<b>' + this.x + '</b><br>' + this.series.name +': '+ Highcharts.numberFormat(this.y, 0, ',') +'';
+							<?php } ?>
+					   
+					   <?php } ?>
+                }
+        }
+		<?php if($cstacked =="true" && $ctype=="4"){ ?>
+		,
+		plotOptions: {
+                
+				column: {
+                    stacking: 'normal',
+                    dataLabels: {
+                        enabled: false,
+                        color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'black',
+						style: {
+							fontWeight: 'normal',
+							color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray',
+							font: 'normal 8px Verdana, sans-serif'
+						},
+						formatter: function() {
+							return Highcharts.numberFormat(this.y, 0, ',') +'';
+						}
+					}
+					
+				}
+        }
+		<?php  } ?>
+		<?php if($cstacked =="true" && $ctype=="1"){ ?>
+		,
+		plotOptions: {
+                
+				area: {
+                    stacking: 'normal',
+                    dataLabels: {
+                        enabled: false,
+                        color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'black',
+						style: {
+							fontWeight: 'normal',
+							color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray',
+							font: 'normal 8px Verdana, sans-serif'
+						},
+						formatter: function() {
+							return Highcharts.numberFormat(this.y, 0, ',') +'';
+						}
+					}
+					
+				}
+        }
+		<?php  } ?>
+		
+		<?php if($ctype =="5"){ ?>
+		,
+		plotOptions: {
+			pie: {
+					allowPointSelect: true,
+					cursor: 'pointer',
+					dataLabels: {
+						enabled: true,
+						color: '#000000',
+						connectorColor: '#000000',
+						formatter: function() {
+							return '<b>'+ this.point.name +'</b>: '+ this.percentage.toFixed(2) +' %';
+						}
+					},
+					showInLegend: true
+				}
+		}
+		<?php  } ?>
+		
+	};
+
+	Highcharts.visualize(table, options);
+});
+
+
+})(jQuery);
+
+	</script>
+	
+	</head>
+	
+	<body>
+				<div style="display:none;">
+				<?php //===============================all data table goes here======================================== ?>
+				<?php 
+					$connection = mysql_connect($hostname,$username,$password) or die ("Sorry an error has occurred");//mysql_errno().": ".mysql_error()."<BR>"); 
+					mysql_select_db($database); 
+
+					$result = mysql_query($query) or die('Report failed: Please check query source'); // mysql_error()
+					while($myrecords[]= mysql_fetch_assoc($result) );
+					array_pop($myrecords);
+								
+					if($transpose_result==0){
+					//=================================normal=================================
+					$xlsdatavalue = "<table width='100%' class='mytable' id='dataset'>";
+					$xlsdatavalue .= "<caption>$mycaption</caption>";     
+						 $xlsdatavalue .= "<thead>";
+						 foreach($myrecords as $key=>$value){
+						    if($key==0){
+								$xlsdatavalue .= "<tr>";
+								foreach($value as $key1=>$value1){
+									$xlsdatavalue .= "<th>". $key1 . "</th>";
+								}
+								$xlsdatavalue .= "</tr>";
+							}
+						 }
+						 $xlsdatavalue .= "</thead><tbody>";
+					    
+						 foreach($myrecords as $key=>$value){
+							$xlsdatavalue .= "<tr>";
+							$count=1;
+							foreach($value as $key1=>$value1){
+								if($count==1){
+									$xlsdatavalue .= "<th>". $value1 . "</th>";
+								}else{
+									$xlsdatavalue .= "<td>". $value1 . "</td>";
+								}
+								$count++;
+						   }
+						    $xlsdatavalue .= "</tr>";
+						 }
+						$xlsdatavalue .= "</tbody>";
+					$xlsdatavalue .= "</table><br>";
+					echo $xlsdatavalue;
+					//=================================normal=================================
+					}else{
+
+					//=================================transpose=================================
+					$xlsdatavalue = "<table width='100%' class='mytable' id='dataset'>";
+					$xlsdatavalue .= "<caption>$mycaption</caption>";     
+						 $rcount=1;
+						 $xlsdatavalue .= "<thead>";
+						 foreach(array_transpose($myrecords) as $key=>$value){
+							
+							
+								$xlsdatavalue .= "<tr>";
+								$xlsdatavalue .= "<th>". $key . "</th>";
+								
+								foreach($value as $key1=>$value1){
+										if($rcount==1){
+											$xlsdatavalue .= "<th>". $value1 . "</th>";
+										}else{
+											$xlsdatavalue .= "<td>". $value1 . "</td>";
+										}
+									
+								}
+								$xlsdatavalue .= "</tr>";
+								if($rcount==1){
+									$xlsdatavalue .= "</thead><tbody>";
+								
+								}
+								$rcount++;
+							
+						 }
+					$xlsdatavalue .= "</tbody></table><br>"; 
+					echo $xlsdatavalue;
+					//=================================transpose=================================
+					}
+				?>
+		        <?php //===============================all data table goes here======================================== ?>
+				</div>
+				<div id="container" style="width:<?php echo $cwidth ; ?>; height:<?php echo $cheight ; ?>;">
+				<input type="button" value="Reload Page" onClick="window.location.reload()">
+				</div>
+						<form method='POST' action="datadownload.php">
+							<a href="#" onclick="document.forms[0].submit()">download data table</a> |
+							<a href="#" onclick="window.location.reload()">[ click here if you can't see the graph ]</a>
+							<input type="hidden" id="xlsdata" name="xlsdata" value="<?php echo $xlsdatavalue ; ?>">
+							<input type="hidden" id="xlsfname" name="xlsfname" value="<?php echo $g[$ctype]. "-" . time() ; ?>">
+						</form>
+			
+				
+	</body>
+</html>
+<?php } ?>
+
+<?php if($vtype == "1"){ ?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="refresh" content="360">
+		<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+		<script type="text/javascript" src="jquery-1.4.4.min.js"></script>
+		<script type="text/javascript" src="jquery.gvChart-1.0.1.min.js"></script>
+		<?php //============================style below================================== ?>
+		<style>
+			body{
+				text-align: left;
+				font-family: Arial, sans-serif;
+				font-size: 12px;
+				font-weight: bold;
+			}
+			
+			a{
+				text-decoration: none;
+				font-weight: bold;
+				color: #555;
+			}
+			
+			a:hover{
+				color: #000;
+			}
+			
+					
+			div.gvChart,.clean{
+				border: 2px solid #850000;
+				width: <?php echo $cwidth ."px"; ?>;
+				text-align: left;
+				
+			}
+			table td tr {
+			font-family:arial;
+			font-size:11px;
+			}
+		</style>
+		<?php //============================style below================================== ?>
+		
+		<script type="text/javascript">
+		gvChartInit();
+		jQuery(document).ready(function(){
+			jQuery('#dataset').gvChart({
+				chartType: '<?php echo $g[$ctype]; ?>',
+				gvSettings: {
+					vAxis: {title: '<?php echo $vax; ?>'},
+					hAxis: {title: '<?php echo $hax; ?>'},
+					<?php echo "isStacked: $cstacked,"; ?>
+					width: <?php echo $cwidth; ?>,
+					height: <?php echo $cheight; ?>,
+					fontSize: 8,
+					NumberFormat: {groupingSymbol:','}
+					}
+			});
+			
+			
+		});
+		</script>
+	
+	</head>
+	
+	<body>
+		
+				<?php //===============================all data table goes here======================================== ?>
+				<?php 
+					
+					$connection = mysql_connect($hostname,$username,$password) or die ("Sorry an error has occurred");//mysql_errno().": ".mysql_error()."<BR>"); 
+					mysql_select_db($database); 
+
+					$result = mysql_query($query) or die('Report failed: Please check query source'); //mysql_error()
+					while($myrecords[]= mysql_fetch_assoc($result) );
+					array_pop($myrecords);
+				
+								
+					if($transpose_result==0){
+					//=================================normal=================================
+					echo "<table id='dataset'>";
+					echo "<caption>$mycaption</caption>";     
+						 echo "<thead>";
+						 foreach($myrecords as $key=>$value){
+						    if($key==0){
+								echo "<tr>";
+								foreach($value as $key1=>$value1){
+									echo "<th>". $key1 . "</th>";
+								}
+								echo "</tr>";
+							}
+						 }
+						 echo "</thead><tbody>";
+					    
+						 foreach($myrecords as $key=>$value){
+							echo "<tr>";
+							$count=1;
+							foreach($value as $key1=>$value1){
+								if($count==1){
+									echo "<th>". $value1 . "</th>";
+								}else{
+									echo "<td>". $value1 . "</td>";
+								}
+								$count++;
+						   }
+						    echo "</tr>";
+						 }
+						echo "</tbody>";
+					echo "</table>";
+					//=================================normal=================================
+					}else{
+
+					//=================================transpose=================================
+					echo "<table id='dataset'>";
+					echo "<caption>$mycaption</caption>";     
+						 $rcount=1;
+						 echo "<thead>";
+						 foreach(array_transpose($myrecords) as $key=>$value){
+							
+							
+								echo "<tr>";
+								echo "<th>". $key . "</th>";
+								
+								foreach($value as $key1=>$value1){
+										if($rcount==1){
+											echo "<th>". $value1 . "</th>";
+										}else{
+											echo "<td>". $value1 . "</td>";
+										}
+									
+								}
+								echo "</tr>";
+								if($rcount==1){
+									echo "</thead><tbody>";
+								
+								}
+								$rcount++;
+							
+						 }
+					echo "</tbody></table>";    
+					//=================================transpose=================================
+					}
+				?>
+		        <?php //===============================all data table goes here======================================== ?>
+		
+	</body>
+</html>
+<?php } ?>
+<?php mysql_close($connection); ?>
+<?php }else{ echo "No data loaded..."; }?>
