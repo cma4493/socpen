@@ -1,5 +1,6 @@
 <?php
-
+include_once "model/DAO.php";
+include_once "model/UserClass.php";
 // Global variable for table object
 $tbl_pensioner = NULL;
 
@@ -323,7 +324,19 @@ class ctbl_pensioner extends cTable {
 	}
 
 	function SqlWhere() { // Where
-		$sWhere = "DELETED <> 1";
+		$UserClass = new UserClass(CurrentUserID());
+		/***
+		 * jfsbaldo 02042016:
+		 * DETERMINES whether the user is admin or not then load pensioners based on the current users' region code (PSGC)
+		 */
+		if (CurrentUserLevel() <> -1)
+		{
+			$sWhere = "DELETED <> 1 AND psgc_region = " . $UserClass->getUserRegion();
+		}
+		else
+		{
+			$sWhere = "DELETED <> 1";
+		}
 		$this->TableFilter = "";
 		ew_AddFilter($sWhere, $this->TableFilter);
 		return $sWhere;

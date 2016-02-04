@@ -9,10 +9,10 @@ define ("DB_USER_NAME", EW_CONN_USER);
 define ("DB_PASSWORD", EW_CONN_PASS);
 
 include ("DAO.php");
-include "EditOtherPensionerDetails.php";
+include "UserClass.php";
 
-$EditOtherPensionerDetails = new EditOtherPensionerDetails();
+$UserClass = new UserClass(15);
 
 echo '<pre>';
-print_r($EditOtherPensionerDetails->getPensionerReps('060616076-13-1',3));
+print_r($UserClass->getUserRegion());
 echo '</pre>';

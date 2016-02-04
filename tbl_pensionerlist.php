@@ -1395,7 +1395,10 @@ class ctbl_pensioner_list extends ctbl_pensioner {
 		}
 		$option = $options["action"];
 
-		// Add multi delete
+		/***
+		 * jfsbaldo 02042016
+		 * CUSTOM UPLOADER using excel template merger
+		 */
 		$item = &$option->Add("multiuploader");
 		$item->Body = "<a class=\"btn btn-primary btn-sm\" href=\"tbl_pensioneruploader.php\">" . "Upload Pensioners" . "</a>";
 		$item->Visible = ($Security->CanDelete());
@@ -1403,7 +1406,19 @@ class ctbl_pensioner_list extends ctbl_pensioner {
 		// Add multi delete
 		$item = &$option->Add("multidelete");
 		$item->Body = "<a class=\"btn btn-purple btn-sm\" href=\"\" onclick=\"ew_SubmitSelected(document.ftbl_pensionerlist, '" . $this->MultiDeleteUrl . "', ewLanguage.Phrase('DeleteMultiConfirmMsg'));return false;\">" . $Language->Phrase("DeleteSelectedLink") . "</a>";
-		$item->Visible = ($Security->CanDelete());
+		/***
+		 * jfsbaldo 02040216:
+		 * determines whether the user is admin or not, else the user cannot access delete button
+		 */
+		if (CurrentUserLevel() == -1)
+		{
+			$item->Visible = ($Security->CanDelete());
+		}
+		else
+		{
+			$item->Visible = FALSE AND ($Security->CanDelete());
+		}
+
 
 		// Set up options default
 		foreach ($options as &$option) {
