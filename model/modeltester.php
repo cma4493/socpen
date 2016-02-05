@@ -11,8 +11,9 @@ define ("DB_PASSWORD", EW_CONN_PASS);
 include ("DAO.php");
 include "UserClass.php";
 
-$UserClass = new UserClass(15);
-
+$filename = 'socpen-060000000-1-2016-02032016050725-11.pdf';
+$exFilename = explode('-',$filename);
+$fileRegion = substr($exFilename[1],0,2).'0000000';
 echo '<pre>';
-print_r($UserClass->getUserRegion());
+print_r(substr($exFilename[1],0,2).'0000000');
 echo '</pre>';

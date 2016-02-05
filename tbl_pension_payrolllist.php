@@ -917,7 +917,18 @@ class ctbl_pension_payroll_list extends ctbl_pension_payroll {
 		// Add multi delete
 		$item = &$option->Add("multidelete");
 		$item->Body = "<a class=\"btn btn-purple btn-sm\" href=\"\" onclick=\"ew_SubmitSelected(document.ftbl_pension_payrolllist, '" . $this->MultiDeleteUrl . "', ewLanguage.Phrase('DeleteMultiConfirmMsg'));return false;\">" . $Language->Phrase("DeleteSelectedLink") . "</a>";
-		$item->Visible = ($Security->CanDelete());
+		/***
+		 * jfsbaldo 02062016
+		 * custom viewing if not admin (-1), the button will be restricted, else if the user is admin, it is available
+		 */
+		if (CurrentUserLevel() <> -1)
+		{
+			$item->Visible = FALSE AND ($Security->CanDelete());
+		}
+		else
+		{
+			$item->Visible = ($Security->CanDelete());
+		}
 
 		// Set up options default
 		foreach ($options as &$option) {

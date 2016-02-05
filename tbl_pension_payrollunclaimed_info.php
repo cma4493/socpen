@@ -1,5 +1,6 @@
 <?php
-
+include_once "model/DAO.php";
+include_once "model/UserClass.php";
 // Global variable for table object
 $tbl_pension_payroll = NULL;
 
@@ -123,7 +124,7 @@ class ctbl_pension_payroll extends cTable {
 
 	// Table level SQL
 	function SqlFrom() { // From
-		return "`tbl_pension_payroll`";
+		return "`tbl_pension_payroll` INNER JOIN tbl_pensioner ON tbl_pension_payroll.PensionerID=tbl_pensioner.PensionerID";
 	}
 
 	function SqlSelect() { // Select
@@ -131,7 +132,15 @@ class ctbl_pension_payroll extends cTable {
 	}
 
 	function SqlWhere() { // Where
-		$sWhere = "Claimed = 0";
+		$UserClass = new UserClass(CurrentUserID());
+		if (CurrentUserLevel() <> -1)
+		{
+			$sWhere = "Claimed = 0 AND psgc_region = " . $UserClass->getUserRegion();
+		}
+		else
+		{
+			$sWhere = "Claimed = 0";
+		}
 		$this->TableFilter = "";
 		ew_AddFilter($sWhere, $this->TableFilter);
 		return $sWhere;
