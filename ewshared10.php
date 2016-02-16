@@ -533,6 +533,9 @@ class cMenu {
 			}else{
 			switch ($text)
 			{
+			case "User Manual":
+				$text="<i class='icon-book'></i> <span class='menu-text'>".$text."</span>";
+				break;
 			case "Change Password":
 			  $text="<i class='icon-unlock'></i> <span class='menu-text'>".$text."</span>";
 			  break;
