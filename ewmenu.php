@@ -5,6 +5,7 @@
 
 // Generate all menu items
 $RootMenu->IsRoot = TRUE;
+$RootMenu->AddMenuItem(91, "User Manual", "spis_usermanual_v1.pdf", -1, "_parent", IsLoggedIn(), FALSE, TRUE);
 $RootMenu->AddMenuItem(31, $Language->MenuPhrase("31", "MenuText"), "", -1, "", IsLoggedIn(), FALSE, TRUE);
 $RootMenu->AddMenuItem(23, $Language->MenuPhrase("23", "MenuText"), "tbl_pensionerlist.php", 31, "", AllowListMenu('{AC00512B-B959-4ABC-B03E-21192746C63D}tbl_pensioner'), FALSE);
 $RootMenu->AddMenuItem(23, "Pensioner Archive", "tbl_pensionerlist_deleted.php", 31, "", AllowListMenu('{AC00512B-B959-4ABC-B03E-21192746C63D}tbl_pensioner'), FALSE);
@@ -42,7 +43,14 @@ $RootMenu->AddMenuItem(18, $Language->MenuPhrase("18", "MenuText"), "lib_statusl
 $RootMenu->AddMenuItem(19, $Language->MenuPhrase("19", "MenuText"), "lib_supportlist.php", 32, "", AllowListMenu('{AC00512B-B959-4ABC-B03E-21192746C63D}lib_support'), FALSE);
 /*$RootMenu->AddMenuItem(20, $Language->MenuPhrase("20", "MenuText"), "lib_utilizationdetaillist.php", 32, "", AllowListMenu('{AC00512B-B959-4ABC-B03E-21192746C63D}lib_utilizationdetail'), FALSE);*/
 $RootMenu->AddMenuItem(33, $Language->MenuPhrase("33", "MenuText"), "", -1, "", IsLoggedIn(), FALSE, TRUE);
-$RootMenu->AddMenuItem(27, $Language->MenuPhrase("27", "MenuText"), "tbl_userlist.php", 33, "", AllowListMenu('{AC00512B-B959-4ABC-B03E-21192746C63D}tbl_user'), FALSE);
+if(CurrentUserLevel() == 4)
+{
+    $RootMenu->AddMenuItem(27, $Language->MenuPhrase("27", "MenuText"), "tbl_user_ritolist.php", 33, "", AllowListMenu('{AC00512B-B959-4ABC-B03E-21192746C63D}tbl_user_rito'), FALSE);
+}
+else
+{
+    $RootMenu->AddMenuItem(27, $Language->MenuPhrase("27", "MenuText"), "tbl_userlist.php", 33, "", AllowListMenu('{AC00512B-B959-4ABC-B03E-21192746C63D}tbl_user'), FALSE);
+}
 $RootMenu->AddMenuItem(28, $Language->MenuPhrase("28", "MenuText"), "userlevelpermissionslist.php", 33, "", (@$_SESSION[EW_SESSION_USER_LEVEL] & EW_ALLOW_ADMIN) == EW_ALLOW_ADMIN, FALSE);
 $RootMenu->AddMenuItem(29, $Language->MenuPhrase("29", "MenuText"), "userlevelslist.php", 33, "", (@$_SESSION[EW_SESSION_USER_LEVEL] & EW_ALLOW_ADMIN) == EW_ALLOW_ADMIN, FALSE);
 $RootMenu->AddMenuItem(30, $Language->MenuPhrase("30", "MenuText"), "audittraillist.php", 33, "", AllowListMenu('{AC00512B-B959-4ABC-B03E-21192746C63D}audittrail'), FALSE);

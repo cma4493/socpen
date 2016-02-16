@@ -32,4 +32,5 @@
 <table id="userlevelpermissions" name="userlevelpermissions" caption="Permissions" userlevel="" priv="1"/>
 <table id="userlevels" name="userlevels" caption="User Levels" userlevel="" priv="1"/>
 <table id="Pensioner_Updates" name="Pensioner Updates" caption="Pensioner Updates" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="tbl_user_rito" name="tbl_user_rito" caption="tbl user rito" userlevel="0,&quot;Default&quot;,0" priv="1"/>
 </project></configuration>

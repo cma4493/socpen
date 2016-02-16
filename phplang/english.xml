@@ -968,5 +968,41 @@
 <field id="old_value"><phrase id="fldcaption" value="old value"/>
 </field>
 </table>
+<table id="tbl_user_rito"><phrase id="tblcaption" value="User Accounts RITO"/>
+<field id="uid"><phrase id="fldcaption" value="uid"/>
+</field>
+<field id="username"><phrase id="fldcaption" value="username"/>
+</field>
+<field id="password"><phrase id="fldcaption" value="password"/>
+</field>
+<field id="_email"><phrase id="fldcaption" value="email"/>
+</field>
+<field id="firstname"><phrase id="fldcaption" value="firstname"/>
+</field>
+<field id="middlename"><phrase id="fldcaption" value="middlename"/>
+</field>
+<field id="surname"><phrase id="fldcaption" value="surname"/>
+</field>
+<field id="extensionname"><phrase id="fldcaption" value="extensionname"/>
+</field>
+<field id="position"><phrase id="fldcaption" value="position"/>
+</field>
+<field id="designation"><phrase id="fldcaption" value="designation"/>
+</field>
+<field id="region_code"><phrase id="fldcaption" value="region code"/>
+</field>
+<field id="user_level"><phrase id="fldcaption" value="user level"/>
+</field>
+<field id="contact_no"><phrase id="fldcaption" value="contact no"/>
+</field>
+<field id="activated"><phrase id="fldcaption" value="activated"/>
+<phrase id="fldtagvalue1" value="0"/>
+<phrase id="fldtagcaption1" value="No"/>
+<phrase id="fldtagvalue2" value="1"/>
+<phrase id="fldtagcaption2" value="Yes"/>
+</field>
+<field id="profile"><phrase id="fldcaption" value="profile"/>
+</field>
+</table>
 </project>
 </ew-language>

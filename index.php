@@ -259,6 +259,8 @@ class cdefault {
 			$this->Page_Terminate("userlevelslist.php");
 		if ($Security->AllowList(CurrentProjectID() . 'Pensioner Updates'))
 			$this->Page_Terminate("Pensioner_Updateslist.php");
+		if ($Security->AllowList(CurrentProjectID() . 'tbl_user_rito'))
+			$this->Page_Terminate("tbl_user_ritolist.php");
 		if ($Security->IsLoggedIn()) {
 			$this->setFailureMessage($Language->Phrase("NoPermission") . "<br><br><a href=\"logout.php\">" . $Language->Phrase("BackToLogin") . "</a>");
 		} else {
