@@ -9,10 +9,11 @@ define ("DB_USER_NAME", EW_CONN_USER);
 define ("DB_PASSWORD", EW_CONN_PASS);
 
 include ("DAO.php");
-include "EditOtherPensionerDetails.php";
+include "UserClass.php";
 
-$EditOtherPensionerDetails = new EditOtherPensionerDetails();
-
+$filename = 'socpen-060000000-1-2016-02032016050725-11.pdf';
+$exFilename = explode('-',$filename);
+$fileRegion = substr($exFilename[1],0,2).'0000000';
 echo '<pre>';
-print_r($EditOtherPensionerDetails->getPensionerReps('060616076-13-1',3));
+print_r(substr($exFilename[1],0,2).'0000000');
 echo '</pre>';

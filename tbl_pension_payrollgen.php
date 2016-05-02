@@ -1783,6 +1783,8 @@ $tbl_pension_payroll_list->Page_Render();
 include_once "model/DAO.php";
 include_once "model/psgcclass.php";
 include_once "model/payrollGeneration.php";
+include_once "model/UserClass.php";
+$UserClass = new UserClass(CurrentUserID());
 $psgcclass = new psgcclass();
 $payrollGeneration = new payrollGeneration();
 ?>
@@ -1824,91 +1826,103 @@ if ($_REQUEST['generatebtn'] == 1){
 	$amount_month = $_REQUEST['amount'];
 	$year = $_REQUEST['year'];
 	$quarter = $_REQUEST['quarter'];
-	$diver = '<div class="alert alert-success">';
-	$diver .= 'Current Selection:';
-	$diver .= '<ul>';
-	$diver .= '<li>' . 'Region: ' . $region . '</li>';
-	$diver .= '<li>' . 'Province: ' . $province . '</li>';
-	$diver .= '<li>' . 'Municipality: ' . $municipality . '</li>';
-	$diver .= '<li>' . 'Barangay: ' . $barangay . '</li>';
-	$diver .= '<li>' . 'Amount: ' . $amount_month . '</li>';
-	$diver .= '<li>' . 'Year: ' . $year . '</li>';
-	$diver .= '<li>' . 'Quarter: ' . $quarter . '</li>';
-	$diver .= '</ul>';
-	$diver .= '</div>';
-	echo $diver;
-
-	if($quarter == 1)
+	if ($region <> $UserClass->getUserRegion())
 	{
-		$forinit = 1;
-		$forloop = 3;
-	}
-	elseif($quarter == 2)
-	{
-		$forinit = 4;
-		$forloop = 6;
-	}
-	elseif($quarter == 3)
-	{
-		$forinit = 7;
-		$forloop = 9;
-	}
-	elseif($quarter == 4)
-	{
-		$forinit = 10;
-		$forloop = 12;
+	?>
+		<div class="alert alert-danger">
+			Please recheck your selected Region, you should have the same region.
+			If problems persist, contact System Administrator!
+		</div>
+<?php
 	}
 	else
 	{
-		$forinit = 0;
-		$forloop = 0;
-	}
+		$diver = '<div class="alert alert-success">';
+		$diver .= 'Current Selection:';
+		$diver .= '<ul>';
+		$diver .= '<li>' . 'Region: ' . $region . '</li>';
+		$diver .= '<li>' . 'Province: ' . $province . '</li>';
+		$diver .= '<li>' . 'Municipality: ' . $municipality . '</li>';
+		$diver .= '<li>' . 'Barangay: ' . $barangay . '</li>';
+		$diver .= '<li>' . 'Amount: ' . $amount_month . '</li>';
+		$diver .= '<li>' . 'Year: ' . $year . '</li>';
+		$diver .= '<li>' . 'Quarter: ' . $quarter . '</li>';
+		$diver .= '</ul>';
+		$diver .= '</div>';
+		echo $diver;
 
-	$payrollGeneration = new payrollGeneration();
-	/*echo '<pre>';
- 	print_r($payrollGeneration->getPensionerAged60($region,$province,$municipality,$barangay));
-	echo '</pre>';*/
-
-	if($payrollGeneration->checkifExisting($region,$province,$municipality,$barangay) > 0){
-		$pensionerRaw = $payrollGeneration->getPensionerAged60($region,$province,$municipality,$barangay);
-
-		foreach($pensionerRaw as $n => $pensionerData)
+		if($quarter == 1)
 		{
-			for($i = $forinit;$i <= $forloop;$i++)
-			{
-				/*echo $pensionerData['PensionerID'] . ' ' . $year . ' ' . $i . ' ' . $amount_month . ' ' . $pensionerData['paymentmodeID'] . '<br>';*/
-				$save_result = $payrollGeneration->savePayroll($year,$i,$amount_month,$pensionerData['PensionerID'],$pensionerData['paymentmodeID'],CurrentUserID());
-				/*echo $save_result . '<br>';*/
-				$save_result2 = $save_result + $save_result;;
-			}
-
+			$forinit = 1;
+			$forloop = 3;
 		}
-		/*echo $save_result2;*/
-		if($save_result2 > 0)
+		elseif($quarter == 2)
+		{
+			$forinit = 4;
+			$forloop = 6;
+		}
+		elseif($quarter == 3)
+		{
+			$forinit = 7;
+			$forloop = 9;
+		}
+		elseif($quarter == 4)
+		{
+			$forinit = 10;
+			$forloop = 12;
+		}
+		else
+		{
+			$forinit = 0;
+			$forloop = 0;
+		}
+
+		$payrollGeneration = new payrollGeneration();
+		/*echo '<pre>';
+         print_r($payrollGeneration->getPensionerAged60($region,$province,$municipality,$barangay));
+        echo '</pre>';*/
+
+		if($payrollGeneration->checkifExisting($region,$province,$municipality,$barangay) > 0){
+			$pensionerRaw = $payrollGeneration->getPensionerAged60($region,$province,$municipality,$barangay);
+
+			foreach($pensionerRaw as $n => $pensionerData)
+			{
+				for($i = $forinit;$i <= $forloop;$i++)
+				{
+					/*echo $pensionerData['PensionerID'] . ' ' . $year . ' ' . $i . ' ' . $amount_month . ' ' . $pensionerData['paymentmodeID'] . '<br>';*/
+					$save_result = $payrollGeneration->savePayroll($year,$i,$amount_month,$pensionerData['PensionerID'],$pensionerData['paymentmodeID'],CurrentUserID());
+					/*echo $save_result . '<br>';*/
+					$save_result2 = $save_result + $save_result;;
+				}
+
+			}
+			/*echo $save_result2;*/
+			if($save_result2 > 0)
+			{ ?>
+				<div class="alert alert-success">
+					Payroll generated successfully!
+				</div>
+			<?php } else { ?>
+				<div class="alert alert-danger">
+					Error Generating Payroll:
+					<ul>
+						<li>The payroll you are trying to generate might already be existing</li>
+						<li>There were errors generating payroll</li>
+					</ul>
+				</div>
+			<?php }
+		}
+		else
 		{ ?>
-			<div class="alert alert-success">
-				Payroll generated successfully!
-			</div>
-		<?php } else { ?>
-			<div class="alert alert-danger">
-				Error Generating Payroll:
+			<div class="alert alert-info">
+				Please check the following information prior to generation:
 				<ul>
-					<li>The payroll you are trying to generate might already be existing</li>
-					<li>There were errors generating payroll</li>
+					<li>The Pensioner you are trying to generate might not be existing on the Pensioner Database</li>
+					<li>The Pensioners you are trying to generate does not meet the compliance validation</li>
 				</ul>
 			</div>
-		<?php }
-	}
-	else
-	{ ?>
-		<div class="alert alert-info">
-			Please check the following information prior to generation:
-			<ul>
-				<li>The Pensioner you are trying to generate might not be existing on the Pensioner Database</li>
-				<li>The Pensioners you are trying to generate does not meet the compliance validation</li>
-			</ul>
-		</div>
-	<?php
+			<?php
+		}
 	}
 }
 ?>

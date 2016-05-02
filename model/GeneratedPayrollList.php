@@ -130,7 +130,77 @@ class GeneratedPayrollList extends DAO
         return $result[0]['counter'];
     }
 
-    public function renderListPayroll()
+    public function renderListPayroll($current_user_region)
+    {
+        $html = '<div class="space-6"></div>';
+        $html .= '<div class="table-responsive">';
+        $html .= '<div class="table-header">Generated Payroll</div>';
+        $html .= '<div class="space-2"></div>';
+        $html .= '<table class="table table-striped table-bordered table-hover">';
+        $html .= '<thead>';
+        $html .= '<tr>';
+        $html .= '<td>' . 'Date Created' . '</td>';
+        $html .= '<td>' . 'File Name' . '</td>';
+        $html .= '<td>' . 'Created By' . '</td>';
+        $html .= '<td>' . ' ' . '</td>';
+        $html .= '</tr>';
+        $html .= '</thead>';
+        $html .= '<tbody>';
+        foreach($this->generatedList() as $payrollListData){
+            $exFilename = explode('-',$payrollListData['file_name']);
+            $fileRegion = substr($exFilename[1],0,2).'0000000';
+            if ($fileRegion == $current_user_region)
+            {
+                $html .= '<tr>';
+                $html .= '<td>' . $payrollListData['date_generated'] . '</td>';
+                $html .= '<td>' . $payrollListData['file_name'] . '</td>';
+                $html .= '<td>' . $payrollListData['created_by'] . '</td>';
+                $html .= '<td>' . '<a target="_blank" href="'.$payrollListData['directory'].'/'.$payrollListData['file_name'].'">'.  'Download' . '</a>' . '</td>';
+                $html .= '</tr>';
+            }
+        }
+        $html .= '</tbody>';
+        $html .= '</table>';
+        $html .= '</div>';
+        return $html;
+    }
+
+    public function renderListAR($current_user_region)
+    {
+        $html = '<div class="space-6"></div>';
+        $html .= '<div class="table-responsive">';
+        $html .= '<div class="table-header">Generated Acknowledment Receipt</div>';
+        $html .= '<div class="space-2"></div>';
+        $html .= '<table class="table table-striped table-bordered table-hover">';
+        $html .= '<thead>';
+        $html .= '<tr>';
+        $html .= '<td>' . 'Date Created' . '</td>';
+        $html .= '<td>' . 'File Name' . '</td>';
+        $html .= '<td>' . 'Created By' . '</td>';
+        $html .= '<td>' . ' ' . '</td>';
+        $html .= '</tr>';
+        $html .= '</thead>';
+        $html .= '<tbody>';
+        foreach($this->generatedListAR() as $payrollListData){
+            $exFilename = explode('-',$payrollListData['file_name']);
+            $fileRegion = substr($exFilename[1],0,2).'0000000';
+            if ($fileRegion == $current_user_region)
+            {
+                $html .= '<tr>';
+                $html .= '<td>' . $payrollListData['date_generated'] . '</td>';
+                $html .= '<td>' . $payrollListData['file_name'] . '</td>';
+                $html .= '<td>' . $payrollListData['created_by'] . '</td>';
+                $html .= '<td>' . '<a target="_blank" href="'.$payrollListData['directory'].'/'.$payrollListData['file_name'].'">'.  'Download' . '</a>' . '</td>';
+                $html .= '</tr>';
+            }
+        }
+        $html .= '</tbody>';
+        $html .= '</table>';
+        $html .= '</div>';
+        return $html;
+    }
+
+    public function renderListPayrollAdmin()
     {
         $html = '<div class="space-6"></div>';
         $html .= '<div class="table-responsive">';
@@ -160,7 +230,7 @@ class GeneratedPayrollList extends DAO
         return $html;
     }
 
-    public function renderListAR()
+    public function renderListARAdmin()
     {
         $html = '<div class="space-6"></div>';
         $html .= '<div class="table-responsive">';

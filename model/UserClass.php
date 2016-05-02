@@ -30,4 +30,15 @@ class UserClass extends DAO
         $this->closeDB();
         return ucfirst($result[0]['surname'] . ' ' . $result[0]['firstname'] . ' ' . $result[0]['middlename'] . ' ' . $result[0]['extensionname']);
     }
+
+    public function getUserRegion()
+    {
+        $sql = 'SELECT region_code FROM tbl_user WHERE uid=:uid';
+        $this->openDB();
+        $this->prepareQuery($sql);
+        $this->bindQueryParam(':uid',$this->getUid());
+        $result = $this->executeQuery();
+        $this->closeDB();
+        return $result[0]['region_code'];
+    }
 }
