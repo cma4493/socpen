@@ -42,11 +42,11 @@ define("EW_TMP_IMAGE_FONT", "DejaVuSans", TRUE); // Font for temp files
 $EW_FONT_PATH = realpath('./phpfont');
 
 // Database connection info
-define("EW_CONN_HOST", 'localhost', TRUE);
+define("EW_CONN_HOST", '', TRUE);
 define("EW_CONN_PORT", 3306, TRUE);
-define("EW_CONN_USER", 'root', TRUE);
-define("EW_CONN_PASS", 'masterpogi', TRUE);
-define("EW_CONN_DB", 'db_pension_access_mkr', TRUE);
+define("EW_CONN_USER", '', TRUE);
+define("EW_CONN_PASS", '', TRUE);
+define("EW_CONN_DB", '', TRUE);
 
 // ADODB (Access/SQL Server)
 define("EW_CODEPAGE", 0, TRUE); // Code page
@@ -253,12 +253,12 @@ define("EW_USER_PROFILE_LAST_PASSWORD_CHANGED_DATE", "LastPasswordChangedDate", 
 define("EW_USER_PROFILE_PASSWORD_EXPIRE", 90, TRUE);
 
 // Email
-define("EW_SMTP_SERVER", "ssl://smtp.gmail.com", TRUE); // SMTP server
-define("EW_SMTP_SERVER_PORT", 465, TRUE); // SMTP server port
+define("EW_SMTP_SERVER", "", TRUE); // SMTP server
+define("EW_SMTP_SERVER_PORT", "", TRUE); // SMTP server port
 define("EW_SMTP_SECURE_OPTION", "", TRUE);
-define("EW_SMTP_SERVER_USERNAME", "itsm-desk@dswd.gov.ph", TRUE); // SMTP server user name
-define("EW_SMTP_SERVER_PASSWORD", "m21l3rm0d3r@t0r123", TRUE); // SMTP server password
-define("EW_SENDER_EMAIL", "socpen-noreply@dswd.gov.ph", TRUE); // Sender email address
+define("EW_SMTP_SERVER_USERNAME", "", TRUE); // SMTP server user name
+define("EW_SMTP_SERVER_PASSWORD", "", TRUE); // SMTP server password
+define("EW_SENDER_EMAIL", "", TRUE); // Sender email address
 define("EW_RECIPIENT_EMAIL", "", TRUE); // Recipient email address
 define("EW_MAX_EMAIL_RECIPIENT", 3, TRUE);
 define("EW_MAX_EMAIL_SENT_COUNT", 3, TRUE);
